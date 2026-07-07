@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -15,32 +15,41 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-500 selection:text-white">
 
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-center gap-2 group">
-                <div class="grid grid-cols-2 gap-0.5 w-6 h-6 group-hover:scale-105 transition-transform">
+                <div class="grid grid-cols-2 gap-0.5 w-6 h-6 group-hover:scale-105 transition-transform duration-300">
                     <div class="bg-[#f25022]"></div><div class="bg-[#7fba00]"></div>
                     <div class="bg-[#00a4ef]"></div><div class="bg-[#ffb900]"></div>
                 </div>
-                <span class="font-bold text-lg tracking-tight text-slate-900 group-hover:text-[#0078d4] transition-colors">XAVIERIUM</span>
+                <span class="font-bold text-lg tracking-tight text-slate-900 group-hover:text-[#0078d4] transition-colors duration-300">XAVIERIUM</span>
             </a>
             <div class="flex items-center gap-4">
-                <a href="#about" class="hidden sm:inline-block text-sm font-semibold text-slate-600 hover:text-[#0078d4] transition-colors">About Me</a>
-                <a href="#services" class="hidden sm:inline-block text-sm font-semibold text-slate-600 hover:text-[#0078d4] transition-colors">Services</a>
-                <a href="#faq" class="hidden md:inline-block text-sm font-semibold text-slate-600 hover:text-[#0078d4] transition-colors">FAQ</a>
-                <a href="tel:09120694134" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-xl text-sm transition-all shadow-sm shadow-orange-500/20 hover:scale-[1.02]">
+                <a href="#about" class="hidden sm:inline-block text-sm font-semibold text-slate-600 hover:text-[#0078d4] transition-colors duration-300">About Me</a>
+                <a href="#diagnostics" class="hidden sm:inline-block text-sm font-semibold text-slate-600 hover:text-[#0078d4] transition-colors duration-300">Check Errors</a>
+                <a href="#pricing" class="hidden sm:inline-block text-sm font-semibold text-slate-600 hover:text-[#0078d4] transition-colors duration-300">Rates</a>
+                <a href="#contact" class="hidden sm:inline-block text-sm font-semibold text-slate-600 hover:text-[#0078d4] transition-colors duration-300">Book Now</a>
+                <a href="tel:09120694134" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-xl text-sm transition-all duration-300 shadow-sm shadow-orange-500/20 hover:scale-[1.02]">
                     <i class="fa-solid fa-phone mr-2"></i>Call Now
                 </a>
             </div>
         </div>
     </nav>
 
+    <!-- HERO HEADER -->
     <header class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-white to-slate-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
             <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-                <span class="inline-flex items-center gap-2 bg-orange-50 text-orange-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border border-orange-100">
-                    <i class="fa-solid fa-graduation-cap"></i> Special Student Pricing Active
-                </span>
+                <div class="flex flex-wrap gap-2 justify-center lg:justify-start items-center">
+                    <span class="inline-flex items-center gap-2 bg-orange-50 text-orange-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border border-orange-100">
+                        <i class="fa-solid fa-graduation-cap"></i> Special Student Pricing Active
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-600 font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border border-emerald-100 shadow-sm animate-pulse">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Online Now (15-20 Min Setup)
+                    </span>
+                </div>
+
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-none">
                     Microsoft Office <br class="hidden sm:inline">
                     <span class="text-[#0078d4]">Installation Service</span>
@@ -48,12 +57,33 @@
                 <p class="text-lg text-slate-600 font-medium max-w-xl mx-auto lg:mx-0">
                     WE INSTALL. YOU FOCUS ON WHAT MATTERS. Get your academic workspace completely set up with 100% security and lifetime performance.
                 </p>
+
+                <!-- PAY AFTER TESTING GUARANTEE -->
+                <div class="bg-blue-50/70 border border-blue-100 rounded-2xl p-4 max-w-xl mx-auto lg:mx-0 text-left flex items-start gap-3 shadow-inner">
+                    <i class="fa-solid fa-shield-halved text-[#0078d4] text-xl mt-0.5"></i>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">Pay Only After It Works!</h4>
+                        <p class="text-xs text-slate-600 mt-0.5">Zero financial risk. I will entirely set up your apps first. Once you open, inspect, and verify everything works flawlessly, that is the only time you pay.</p>
+                    </div>
+                </div>
+
+                <!-- FREE DEVICE HEALTH CHECK BADGE/INFO -->
+                <div class="bg-amber-50/80 border border-amber-200/70 rounded-2xl p-4 max-w-xl mx-auto lg:mx-0 text-left flex items-center gap-3">
+                    <div class="w-10 h-10 bg-amber-500/10 text-amber-600 rounded-xl flex items-center justify-center text-lg shrink-0">
+                        <i class="fa-solid fa-sparkles"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">Exclusive Free Bonus Value Add</h4>
+                        <p class="text-xs text-slate-600 mt-0.5">Includes a complimentary background laptop cache cleanup and speed optimization to ensure lightning-fast app launching!</p>
+                    </div>
+                </div>
+
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-                    <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="inline-flex items-center justify-center bg-[#0078d4] hover:bg-[#0062ae] text-white font-semibold px-6 py-3.5 rounded-xl transition-all shadow-lg shadow-blue-500/20 hover:scale-[1.02]">
+                    <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="inline-flex items-center justify-center bg-[#0078d4] hover:bg-[#0062ae] text-white font-semibold px-6 py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/20 hover:scale-[1.02]">
                         <i class="fa-brands fa-facebook-messenger mr-2 text-lg"></i> Contact XAVIERIUM
                     </a>
-                    <a href="#services" class="inline-flex items-center justify-center bg-white hover:bg-slate-100 text-slate-700 font-semibold px-6 py-3.5 rounded-xl transition-all border border-slate-200">
-                        View Offerings
+                    <a href="#apps" class="inline-flex items-center justify-center bg-white hover:bg-slate-100 text-slate-700 font-semibold px-6 py-3.5 rounded-xl transition-all duration-300 border border-slate-200">
+                        View Included Apps
                     </a>
                 </div>
             </div>
@@ -89,42 +119,241 @@
         </div>
     </header>
 
-    <section class="bg-white border-y border-slate-100 py-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div class="space-y-1">
-                <i class="fa-solid fa-certificate text-[#0078d4] text-xl mb-1"></i>
-                <h4 class="font-bold text-slate-900 text-sm">FULLY ACTIVATED</h4>
-                <p class="text-xs text-slate-500">All Features Unlocked</p>
+    <!-- WARNING SIGNS DIAGNOSTIC GRID -->
+    <section id="diagnostics" class="py-16 bg-white border-y border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+                <span class="text-xs font-bold text-red-500 uppercase tracking-widest block">Is Your Laptop Blocked?</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight sm:text-3xl">Common Interruptions I Troubleshoot Instantly</h2>
+                <p class="text-slate-600 text-sm">If your current application layout displays any of these warnings, it is time for a professional, clean system reset.</p>
             </div>
-            <div class="space-y-1">
-                <i class="fa-solid fa-lock text-emerald-500 text-xl mb-1"></i>
-                <h4 class="font-bold text-slate-900 text-sm">SAFE & SECURE</h4>
-                <p class="text-xs text-slate-500">No Virus | No Scam</p>
-            </div>
-            <div class="space-y-1">
-                <i class="fa-solid fa-key text-amber-500 text-xl mb-1"></i>
-                <h4 class="font-bold text-slate-900 text-sm">LIFETIME LICENSE</h4>
-                <p class="text-xs text-slate-500">Permanent Access</p>
-            </div>
-            <div class="space-y-1">
-                <i class="fa-solid fa-gauge-high text-purple-500 text-xl mb-1"></i>
-                <h4 class="font-bold text-slate-900 text-sm">FAST & STABLE</h4>
-                <p class="text-xs text-slate-500">Peak Office Performance</p>
+
+            <div class="grid sm:grid-cols-3 gap-6">
+                <div class="bg-slate-50 p-5 rounded-2xl border-l-4 border-red-500 flex items-start gap-4 transition-transform duration-300 hover:-translate-y-1">
+                    <i class="fa-solid fa-triangle-exclamation text-red-500 text-xl mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">"Unlicensed Product"</h4>
+                        <p class="text-xs text-slate-500 mt-1">A red or yellow title bar warning that completely locks editing features or limits document modifications.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-2xl border-l-4 border-red-500 flex items-start gap-4 transition-transform duration-300 hover:-translate-y-1">
+                    <i class="fa-solid fa-clock-rotate-left text-red-500 text-xl mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">"Subscription Expired"</h4>
+                        <p class="text-xs text-slate-500 mt-1">Repetitive and frustrating popups forcing you into subscription screens every single time you open Word.</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-2xl border-l-4 border-red-500 flex items-start gap-4 transition-transform duration-300 hover:-translate-y-1">
+                    <i class="fa-solid fa-file-signature text-red-500 text-xl mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">Read-Only Mode Lock</h4>
+                        <p class="text-xs text-slate-500 mt-1">Documents open successfully but keyboard inputs are blocked, leaving you completely unable to type out papers.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-white">
+    <!-- SUPPORTED APPLICATIONS GRID -->
+    <section id="apps" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold text-[#0078d4] uppercase tracking-widest block">Premium Inclusion Matrix</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">Full Premium Workspace Unlocked</h2>
+                <p class="text-slate-600 font-medium">You aren't just getting one app—you get the entire suite completely feature-unlocked with absolute support.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <!-- Word -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col items-center text-center group hover:border-[#2b579a] transition-all duration-300">
+                    <div class="w-12 h-12 bg-blue-50 text-[#2b579a] rounded-xl flex items-center justify-center text-2xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-regular fa-file-word"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-sm">Word</h4>
+                    <p class="text-[11px] text-slate-500 mt-1">Premium editing, citations, templates</p>
+                </div>
+                <!-- Excel -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col items-center text-center group hover:border-[#217346] transition-all duration-300">
+                    <div class="w-12 h-12 bg-emerald-50 text-[#217346] rounded-xl flex items-center justify-center text-2xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-regular fa-file-excel"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-sm">Excel</h4>
+                    <p class="text-[11px] text-slate-500 mt-1">Advanced data modeling, charts, macros</p>
+                </div>
+                <!-- PowerPoint -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col items-center text-center group hover:border-[#b7472a] transition-all duration-300">
+                    <div class="w-12 h-12 bg-orange-50 text-[#b7472a] rounded-xl flex items-center justify-center text-2xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-regular fa-file-powerpoint"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-sm">PowerPoint</h4>
+                    <p class="text-[11px] text-slate-500 mt-1">Premium morph transitions, rich assets</p>
+                </div>
+                <!-- Outlook -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col items-center text-center group hover:border-[#0078d4] transition-all duration-300">
+                    <div class="w-12 h-12 bg-sky-50 text-[#0078d4] rounded-xl flex items-center justify-center text-2xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-sm">Outlook</h4>
+                    <p class="text-[11px] text-slate-500 mt-1">Professional inbox tracking, calendar</p>
+                </div>
+                <!-- Teams -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col items-center text-center group hover:border-[#4b53bc] transition-all duration-300">
+                    <div class="w-12 h-12 bg-indigo-50 text-[#4b53bc] rounded-xl flex items-center justify-center text-2xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-users-rectangle"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-sm">Teams</h4>
+                    <p class="text-[11px] text-slate-500 mt-1">Seamless academic collaboration setup</p>
+                </div>
+                <!-- OneNote -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col items-center text-center group hover:border-[#80397b] transition-all duration-300">
+                    <div class="w-12 h-12 bg-purple-50 text-[#80397b] rounded-xl flex items-center justify-center text-2xl font-bold mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-regular fa-note-sticky"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-sm">OneNote</h4>
+                    <p class="text-[11px] text-slate-500 mt-1">Infinite cross-device digital notebooks</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING CARDS -->
+    <section id="pricing" class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+                <span class="text-xs font-bold text-[#0078d4] uppercase tracking-widest block">Transparent Options</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Optimized Setup Service Rates</h2>
+                <p class="text-slate-600 text-sm">Pick the perfect profile category matching your machine's software requirement context.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <!-- Card 1: Student Rate -->
+                <div class="bg-slate-50 border-2 border-orange-500/30 rounded-3xl p-8 relative shadow-sm transition-all duration-300 hover:shadow-md">
+                    <div class="absolute -top-4 left-6 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-md shadow">
+                        MOST POPULAR MATCH
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">Student Promo Tier</h3>
+                    <p class="text-xs text-slate-500 mt-1">Optimized explicitly for ongoing school allowances.</p>
+                    <div class="mt-4 flex items-baseline gap-1 text-slate-900">
+                        <span class="text-2xl font-bold">Budget Friendly</span>
+                    </div>
+                    <ul class="mt-6 space-y-3 text-sm font-medium text-slate-600">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-orange-500"></i> Full Premium Application Suite</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-orange-500"></i> Lifetime Unlock Configuration</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-orange-500"></i> Free System Junk cache cleanup</li>
+                    </ul>
+                    <a href="#contact" class="mt-8 block text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl text-sm transition-all duration-300 shadow-md">Select Student Plan</a>
+                </div>
+
+                <!-- Card 2: Pro Setup -->
+                <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm transition-all duration-300 hover:shadow-md">
+                    <h3 class="text-xl font-bold text-slate-900">Professional Setup</h3>
+                    <p class="text-xs text-slate-500 mt-1">Tailored for offices, workspaces, and non-student setups.</p>
+                    <div class="mt-4 flex items-baseline gap-1 text-slate-900">
+                        <span class="text-2xl font-bold">Standard Rates</span>
+                    </div>
+                    <ul class="mt-6 space-y-3 text-sm font-medium text-slate-600">
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-[#0078d4]"></i> Enterprise Level Deployment</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-[#0078d4]"></i> Advanced system diagnostic verification</li>
+                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-[#0078d4]"></i> Post-installation priority query desk</li>
+                    </ul>
+                    <a href="#contact" class="mt-8 block text-center bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl text-sm transition-all duration-300 border border-slate-200">Select Standard Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS STEP-BY-STEP WORKFLOW -->
+    <section id="workflow" class="py-20 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold text-orange-500 uppercase tracking-widest block">Streamlined Experience</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">How The Setup Works</h2>
+                <p class="text-slate-600 font-medium">Getting your software properly sorted shouldn't be complicated. I make it effortless in 3 simple steps.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <div class="relative bg-white rounded-2xl p-6 border border-slate-200/60 space-y-4 shadow-sm transition-transform duration-300 hover:-translate-y-1">
+                    <div class="absolute -top-5 left-6 w-10 h-10 bg-[#0078d4] text-white rounded-xl flex items-center justify-center font-extrabold text-lg shadow-md shadow-blue-500/20">1</div>
+                    <div class="pt-2">
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Submit Details</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Use the form or message directly on Messenger. Just tell me your generic laptop system profile (Windows/Mac).</p>
+                    </div>
+                </div>
+                <div class="relative bg-white rounded-2xl p-6 border border-slate-200/60 space-y-4 shadow-sm transition-transform duration-300 hover:-translate-y-1">
+                    <div class="absolute -top-5 left-6 w-10 h-10 bg-orange-500 text-white rounded-xl flex items-center justify-center font-extrabold text-lg shadow-md shadow-orange-500/20">2</div>
+                    <div class="pt-2">
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Clean Installation</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">I deploy a 100% stable, authenticated application block onto your device safely. No adware, no system risks.</p>
+                    </div>
+                </div>
+                <div class="relative bg-white rounded-2xl p-6 border border-slate-200/60 space-y-4 shadow-sm transition-transform duration-300 hover:-translate-y-1">
+                    <div class="absolute -top-5 left-6 w-10 h-10 bg-emerald-500 text-white rounded-xl flex items-center justify-center font-extrabold text-lg shadow-md shadow-emerald-500/20">3</div>
+                    <div class="pt-2">
+                        <h3 class="font-bold text-lg text-slate-900 mb-1">Verify and Inspect</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">Boot up your apps, run sample equations or files, confirm the layout status is active, and fulfill your rate only after satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST VS RISK COMPARISON TABLE -->
+    <section class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-xs font-bold text-[#0078d4] uppercase tracking-widest block">Informed Choice</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 sm:text-3xl">Why Local Service Beats Shady Internet Downloads</h2>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xl overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900 text-white text-xs font-bold uppercase tracking-wider">
+                                <th class="p-4 sm:p-5">Core Features Matrix</th>
+                                <th class="p-4 sm:p-5 bg-red-950/40 text-red-400">Sketchy Online Activators</th>
+                                <th class="p-4 sm:p-5 bg-blue-950/40 text-blue-400">XAVIERIUM Configuration</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-slate-100 font-medium">
+                            <tr>
+                                <td class="p-4 sm:p-5 text-slate-900 font-bold">Device Integrity</td>
+                                <td class="p-4 sm:p-5 text-red-600 bg-red-50/30"><i class="fa-solid fa-circle-xmark mr-1.5"></i> Dangerous malware risks</td>
+                                <td class="p-4 sm:p-5 text-emerald-600 bg-blue-50/20"><i class="fa-solid fa-circle-check mr-1.5"></i> 100% clean & secure setup</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-5 text-slate-900 font-bold">Activation Longevity</td>
+                                <td class="p-4 sm:p-5 text-red-600 bg-red-50/30"><i class="fa-solid fa-circle-xmark mr-1.5"></i> Expires randomly during tasks</td>
+                                <td class="p-4 sm:p-5 text-emerald-600 bg-blue-50/20"><i class="fa-solid fa-circle-check mr-1.5"></i> Permanent lifetime performance</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-5 text-slate-900 font-bold">System Workspace Bloat</td>
+                                <td class="p-4 sm:p-5 text-red-600 bg-red-50/30"><i class="fa-solid fa-circle-xmark mr-1.5"></i> Spams disruptive error popups</td>
+                                <td class="p-4 sm:p-5 text-emerald-600 bg-blue-50/20"><i class="fa-solid fa-circle-check mr-1.5"></i> Fluid execution, zero popups</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 sm:p-5 text-slate-900 font-bold">Technical Help Desk</td>
+                                <td class="p-4 sm:p-5 text-red-600 bg-red-50/30"><i class="fa-solid fa-circle-xmark mr-1.5"></i> Left completely on your own</td>
+                                <td class="p-4 sm:p-5 text-emerald-600 bg-blue-50/20"><i class="fa-solid fa-circle-check mr-1.5"></i> Reachable local support chat</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEET THE FOUNDER -->
+    <section id="about" class="py-20 bg-slate-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
 
-                <!-- PROFILE CARD BLOCK (FIXED) -->
+                <!-- PROFILE CARD BLOCK -->
                 <div class="lg:col-span-5 flex justify-center order-last lg:order-first">
                     <div class="relative group w-full max-w-sm">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 to-[#0078d4] rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 to-[#0078d4] rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
 
-                        <div class="relative bg-slate-50 border border-slate-200/60 p-6 rounded-2xl text-center shadow-sm">
-                            <!-- Image Wrap with clean styling -->
+                        <div class="relative bg-white border border-slate-200/60 p-6 rounded-2xl text-center shadow-sm">
                             <a href="https://www.facebook.com/profile.php?id=61584304726156" target="_blank" class="block relative inline-block group/img">
                                 <img src="data/kym.jfif" alt="Kym Xavier Alamis" class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-4 border-white shadow-md group-hover/img:border-[#0078d4] transition-all duration-300">
                                 <div class="absolute bottom-4 right-2 bg-[#0078d4] text-white rounded-full w-7 h-7 flex items-center justify-center border-2 border-white shadow text-xs">
@@ -136,17 +365,17 @@
                             <p class="text-sm text-[#0078d4] font-semibold mt-1">Founder of XAVIERIUM</p>
 
                             <div class="mt-6 pt-6 border-t border-slate-200/60 grid grid-cols-2 gap-4 text-left">
-                                <div class="bg-white p-3 rounded-xl border border-slate-100">
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                                     <span class="block text-xs font-bold text-orange-500 uppercase tracking-wider">Pricing</span>
                                     <span class="block text-sm font-extrabold text-slate-800 mt-1">Student Rates</span>
                                 </div>
-                                <div class="bg-white p-3 rounded-xl border border-slate-100">
+                                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
                                     <span class="block text-xs font-bold text-emerald-500 uppercase tracking-wider">Response</span>
                                     <span class="block text-sm font-extrabold text-slate-800 mt-1">Ultra Fast</span>
                                 </div>
                             </div>
 
-                            <a href="https://www.facebook.com/profile.php?id=61584304726156" target="_blank" class="mt-6 inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-[#0078d4] transition-colors">
+                            <a href="https://www.facebook.com/profile.php?id=61584304726156" target="_blank" class="mt-6 inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-[#0078d4] transition-colors duration-300">
                                 <i class="fa-brands fa-facebook text-base"></i> View Personal Profile <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                             </a>
                         </div>
@@ -156,135 +385,100 @@
                 <div class="lg:col-span-7 space-y-6">
                     <div class="space-y-2">
                         <span class="text-xs font-bold text-[#0078d4] uppercase tracking-widest block">Meet Your Installer</span>
-                        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">
-                            Meet the Mind Behind XAVIERIUM
-                        </h2>
+                        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">Meet the Mind Behind XAVIERIUM</h2>
                     </div>
 
                     <div class="text-slate-600 font-medium space-y-4 leading-relaxed text-base sm:text-lg">
-                        <p>
-                            Hey! I'm <strong class="text-slate-900">Kym Xavier Alamis</strong>. As someone closely tied into the academic and local student community, I know exactly how frustrating it is when your productivity tools lock up or expire right before a major, high-stakes deadline.
-                        </p>
-                        <p>
-                            I built <strong class="text-[#0078d4]">XAVIERIUM</strong> because you shouldn't have to break your allowance budget or risk downloading sketchy, virus-filled activators online just to complete your schoolwork.
-                        </p>
-                        <p>
-                            My mission is transparent: provide safe, completely permanent, and rock-stable Microsoft installations at rates optimized directly for a student's budget. When you hire me, you aren't just getting an installation—you are investing in absolute digital safety, uncompromised feature access, and local support you can count on anytime.
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-sm font-bold text-slate-800">
-                        <div class="flex items-center gap-2.5">
-                            <i class="fa-solid fa-graduation-cap text-orange-500"></i> Trusted by Local Students
-                        </div>
-                        <div class="flex items-center gap-2.5">
-                            <i class="fa-solid fa-shield-virus text-emerald-500"></i> 100% Virus-Free Guarantee
-                        </div>
-                        <div class="flex items-center gap-2.5">
-                            <i class="fa-solid fa-bolt text-amber-500"></i> Setup Done in Minutes
-                        </div>
-                        <div class="flex items-center gap-2.5">
-                            <i class="fa-solid fa-comments text-blue-500"></i> Always Reachable via Facebook
-                        </div>
+                        <p>Hey! I'm <strong class="text-slate-900">Kym Xavier Alamis</strong>. As someone closely tied into the academic and local student community, I know exactly how frustrating it is when your productivity tools lock up or expire right before a major, high-stakes deadline.</p>
+                        <p>I built <strong class="text-[#0078d4]">XAVIERIUM</strong> because you shouldn't have to break your allowance budget or risk downloading sketchy, virus-filled activators online just to complete your schoolwork.</p>
+                        <p>My mission is transparent: provide safe, completely permanent, and rock-stable Microsoft installations at rates optimized directly for a student's budget. When you hire me, you aren't just getting an installation—you are investing in absolute digital safety, uncompromised feature access, and local support you can count on anytime.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-20 bg-slate-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-xs font-bold text-orange-500 uppercase tracking-widest block">Premium Configurations</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">What We Install</h2>
-                <p class="text-slate-600 font-medium">Hassle-free, permanent activation for your absolute productivity.</p>
-            </div>
+    <!-- AUTOMATED INTERACTIVE MESSENGER FORM + COPY PASTE MESSENGER BLUEPRINT BLOCK -->
+    <section id="contact" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-start">
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-blue-50 text-[#0078d4] rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-[#0078d4] group-hover:text-white transition-all">
-                        <i class="fa-solid fa-cloud"></i>
-                    </div>
-                    <h3 class="font-bold text-xl text-slate-900 mb-2">Microsoft 365 Installation</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Complete setup of cloud-connected tools tailored for modern multitasking and shared productivity setups.</p>
+            <!-- Left Side: Dynamic Automated Booking Form -->
+            <div class="lg:col-span-7 bg-slate-50 rounded-3xl p-8 border border-slate-100 shadow-sm">
+                <div class="mb-6 space-y-1">
+                    <h2 class="text-xl font-extrabold text-slate-900">Book Your Installation Instantly</h2>
+                    <p class="text-slate-600 text-xs">Fill this out to prepare an inquiry message directly to my Facebook chat channel!</p>
                 </div>
 
-                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-amber-500 group-hover:text-white transition-all">
-                        <i class="fa-solid fa-infinity"></i>
-                    </div>
-                    <h3 class="font-bold text-xl text-slate-900 mb-2">Permanent Activation</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Ensure a clean, completely permanent lifetime digital unlock status without recurrent popups or lockouts.</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6 group-hover:bg-orange-500 group-hover:text-white transition-all">
-                        <i class="fa-solid fa-cubes"></i>
-                    </div>
-                    <h3 class="font-bold text-xl text-slate-900 mb-2">Microsoft Office Suite</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">Full tools deployment including Word, Excel, PowerPoint, Teams, Outlook, and all essential productivity apps.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW FAQ SECTION -->
-    <section id="faq" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 space-y-3">
-                <span class="text-xs font-bold text-[#0078d4] uppercase tracking-widest block">Got Questions?</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Frequently Asked Questions</h2>
-            </div>
-            <div class="space-y-4">
-                <div class="p-6 bg-slate-50 border border-slate-100 rounded-2xl">
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">Is the activation really permanent?</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">Yes! Once installed, your Microsoft Office suite is permanently activated. You won't have to worry about monthly subscriptions or sudden expiration pop-ups while doing your assignments.</p>
-                </div>
-                <div class="p-6 bg-slate-50 border border-slate-100 rounded-2xl">
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">Is it safe for my laptop?</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">100% safe. We strictly avoid shady activators that carry viruses or malware. Your files, privacy, and device health are our absolute top priorities.</p>
-                </div>
-                <div class="p-6 bg-slate-50 border border-slate-100 rounded-2xl">
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">How long does the installation take?</h4>
-                    <p class="text-slate-600 text-sm leading-relaxed">The entire process usually takes about 15 to 30 minutes, depending on your laptop's performance and internet connection speed.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW SUGGESTIONS & QUESTIONS FORM SECTION -->
-    <section id="contact" class="py-20 bg-slate-50 border-t border-slate-200">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-xl shadow-slate-200/50 border border-slate-100">
-                <div class="text-center mb-8 space-y-2">
-                    <h2 class="text-2xl font-extrabold text-slate-900">Have a Question or Suggestion?</h2>
-                    <p class="text-slate-600 text-sm">Drop your inquiries below! Fill out the form and it will open your email to send directly to me.</p>
-                </div>
-                <form action="mailto:kymxavier@example.com" method="POST" enctype="text/plain" class="space-y-5">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        <div class="space-y-1.5">
-                            <label class="text-sm font-bold text-slate-700">Your Name</label>
-                            <input type="text" name="Name" placeholder="Juan Dela Cruz" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-[#0078d4] focus:border-transparent outline-none transition-all">
+                <form id="messengerForm" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Your Name</label>
+                            <input type="text" id="formName" required placeholder="Juan Dela Cruz" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white outline-none focus:ring-2 focus:ring-[#0078d4] transition-all text-sm">
                         </div>
-                        <div class="space-y-1.5">
-                            <label class="text-sm font-bold text-slate-700">Email Address</label>
-                            <input type="email" name="Email" placeholder="juan@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-[#0078d4] focus:border-transparent outline-none transition-all">
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-slate-700">Laptop Model / OS</label>
+                            <input type="text" id="formLaptop" required placeholder="Acer Aspire / Windows 11" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white outline-none focus:ring-2 focus:ring-[#0078d4] transition-all text-sm">
                         </div>
                     </div>
-                    <div class="space-y-1.5">
-                        <label class="text-sm font-bold text-slate-700">Your Message / Question</label>
-                        <textarea rows="4" name="Message" placeholder="How can I help you today?" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:ring-2 focus:ring-[#0078d4] focus:border-transparent outline-none transition-all"></textarea>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-slate-700">Preferred Package or Special Requests</label>
+                        <textarea rows="3" id="formMessage" placeholder="Hi! I want to request a permanent activation package for school..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white outline-none focus:ring-2 focus:ring-[#0078d4] transition-all text-sm"></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-[#0078d4] hover:bg-[#0062ae] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-blue-500/20">
-                        Send Message <i class="fa-solid fa-paper-plane ml-2"></i>
+                    <button type="submit" class="w-full bg-[#0078d4] hover:bg-[#0062ae] text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-md flex items-center justify-center gap-2 text-sm hover:scale-[1.01]">
+                        <i class="fa-brands fa-facebook-messenger text-lg"></i> Open Facebook Messenger Chat
                     </button>
                 </form>
             </div>
+
+            <!-- Manual Copy-and-Paste Messenger Blueprint Card -->
+            <div class="lg:col-span-5 bg-slate-900 text-white rounded-3xl p-8 space-y-4 border border-slate-800 shadow-xl">
+                <div class="space-y-1">
+                    <span class="text-orange-500 font-bold text-[10px] uppercase tracking-widest block">Alternative Quick Method</span>
+                    <h3 class="font-extrabold text-lg">Manual Copy-Paste Blueprint</h3>
+                    <p class="text-xs text-slate-400">Prefer browsing Messenger manually or via FB Lite? Tap the button below to copy a pre-made format template instantly!</p>
+                </div>
+
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 relative">
+                    <pre id="blueprintText" class="text-xs text-slate-300 font-mono whitespace-pre-wrap leading-relaxed">Hi XAVIERIUM! I'd like to book an appointment.
+• Name: [Your Name Here]
+• Laptop: [e.g. Asus / Win 11]
+• Package: Student Promo Tier</pre>
+                </div>
+
+                <button onclick="copyBlueprintToClipboard()" class="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold py-2.5 rounded-xl text-xs transition-all duration-300 flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-copy"></i> Copy Message Template
+                </button>
+            </div>
+
         </div>
     </section>
 
-    <!-- NEW STUDENT DONATION SECTION -->
-    <section id="donate" class="py-16 bg-slate-900 text-center relative overflow-hidden border-b border-slate-800">
+    <!-- CLIPBOARD & FORM NAVIGATION LOGIC -->
+    <script>
+        function copyBlueprintToClipboard() {
+            const copyText = document.getElementById("blueprintText").innerText;
+            navigator.clipboard.writeText(copyText);
+            alert("Blueprint template copied! Open your Facebook Messenger app and paste it right into our chat.");
+        }
+
+        document.getElementById('messengerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('formName').value.trim();
+            const laptop = document.getElementById('formLaptop').value.trim();
+            const message = document.getElementById('formMessage').value.trim();
+
+            let textPayload = `Hi XAVIERIUM! I would like to inquire about your Office Service.\n\n`;
+            textPayload += `• Name: ${name}\n`;
+            textPayload += `• Laptop Detail: ${laptop}\n`;
+            if(message) { textPayload += `• Notes: ${message}`; }
+
+            const basePageUrl = "https://www.facebook.com/profile.php?id=61590647882306";
+            window.open(basePageUrl, '_blank');
+        });
+    </script>
+
+    <!-- UPDATED: STUDENT DONATION SECTION WITH GCASH QR CODE DISPLAY -->
+    <section id="donate" class="py-16 bg-slate-950 text-center relative overflow-hidden border-b border-slate-900">
         <div class="absolute inset-0 bg-gradient-to-br from-[#0078d4]/10 to-emerald-500/10 opacity-60"></div>
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
             <div class="w-16 h-16 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center mx-auto text-3xl mb-2">
@@ -292,44 +486,60 @@
             </div>
             <h2 class="text-3xl font-extrabold text-white tracking-tight">Support My Student Journey</h2>
             <p class="text-slate-300 font-medium text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                I run XAVIERIUM to provide affordable tech solutions to the community while independently funding my studies. If my service helped you, or if you'd just like to support a student's project, any contribution is deeply appreciated!
+                I run XAVIERIUM to provide affordable tech solutions to the community while independently funding my studies. If my service helped you, scan the QR code to support!
             </p>
 
-            <!-- GCash Banner -->
-            <div class="inline-flex flex-col sm:flex-row items-center gap-4 mt-6 bg-white/10 backdrop-blur-md p-2 pl-6 rounded-2xl border border-white/20">
-                <div class="flex items-center gap-3">
-                    <span class="bg-[#007DFE] text-white text-xs font-black px-2 py-1 rounded">GCash</span>
-                    <span class="text-2xl font-black text-white tracking-widest">0912 069 4134</span>
-                </div>
-                <button onclick="navigator.clipboard.writeText('09120694134'); alert('GCash number copied to clipboard! Thank you so much!');" class="bg-white hover:bg-slate-100 text-slate-900 font-bold px-5 py-2.5 rounded-xl text-sm transition-all w-full sm:w-auto shadow-lg">
-                    <i class="fa-regular fa-copy mr-1"></i> Copy Number
-                </button>
-            </div>
+            <!-- GCash QR Code Visual Card Housing Block Layout Container Component -->
+<div class="inline-block bg-white p-6 rounded-3xl shadow-2xl border border-white/10 max-w-[280px] w-full transition-transform duration-300 hover:scale-[1.03] mx-auto">
+    <div class="bg-[#007DFE] rounded-xl p-3 mb-4 flex items-center justify-center gap-2 shadow-sm">
+        <span class="text-white text-sm font-black tracking-wider">GCash Instant Scan</span>
+    </div>
+
+    <!-- Updated with download link around the image -->
+    <a href="data/gcash-qr.png" download="Xavierium-GCash-QR.png" class="block bg-slate-50 p-2 rounded-2xl border border-slate-100 flex items-center justify-center overflow-hidden aspect-square group/qr cursor-pointer relative">
+        <img src="data/gcash-qr.png" alt="Xavierium GCash QR Code" class="w-full h-full object-contain rounded-lg group-hover/qr:opacity-75 transition-opacity">
+        <!-- Subtle hover overlay hint -->
+        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover/qr:opacity-100 transition-opacity bg-black/10 text-slate-800 text-xs font-bold">
+            <i class="fa-solid fa-download mr-1"></i> Click to Download
+        </div>
+    </a>
+
+    <!-- Added an explicit Download Button below the image -->
+    <a href="data/gcash-qr.png" download="Xavierium-GCash-QR.png" class="mt-3 w-full bg-slate-100 hover:bg-[#007DFE] hover:text-white text-slate-700 font-bold py-2 rounded-xl text-xs transition-all duration-300 flex items-center justify-center gap-1.5 shadow-sm">
+        <i class="fa-solid fa-download"></i> Save QR Code
+    </a>
+
+    <div class="mt-4 pt-3 border-t border-slate-100">
+        <p class="text-slate-900 text-xs font-bold tracking-tight">Kym Xavier A.</p>
+        <p class="text-slate-400 text-[10px] mt-0.5">Scan using GCash App</p>
+    </div>
+</div>
+
             <p class="text-slate-400 text-xs mt-4">Every coffee or donation goes a long way. Thank you! ❤️</p>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="bg-slate-950 text-slate-400 pt-16 pb-8">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div class="grid md:grid-cols-3 gap-8 pb-12 border-b border-slate-900">
-
-                <a href="tel:09120694134" class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-900 transition-all group">
-                    <div class="w-10 h-10 bg-slate-900 text-orange-500 rounded-lg flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-all">
+                <a href="tel:09120694134" class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-900 transition-all duration-300 group">
+                    <div class="w-10 h-10 bg-slate-900 text-orange-500 rounded-lg flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <div>
                         <h4 class="font-bold text-white text-sm">Call / Text</h4>
-                        <p class="text-sm mt-0.5 group-hover:text-white transition-colors">09120694134</p>
+                        <p class="text-sm mt-0.5 group-hover:text-white transition-colors duration-300">09120694134</p>
                     </div>
                 </a>
 
-                <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-900 transition-all group">
-                    <div class="w-10 h-10 bg-slate-900 text-[#0078d4] rounded-lg flex items-center justify-center group-hover:bg-[#0078d4] group-hover:text-white transition-all">
+                <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-900 transition-all duration-300 group">
+                    <div class="w-10 h-10 bg-slate-900 text-[#0078d4] rounded-lg flex items-center justify-center group-hover:bg-[#0078d4] group-hover:text-white transition-all duration-300">
                         <i class="fa-brands fa-facebook-f"></i>
                     </div>
                     <div>
                         <h4 class="font-bold text-white text-sm">XAVIERIUM Page</h4>
-                        <p class="text-sm mt-0.5 group-hover:text-white transition-colors">Follow & Message Us</p>
+                        <p class="text-sm mt-0.5 group-hover:text-white transition-colors duration-300">Follow & Message Us</p>
                     </div>
                 </a>
 
@@ -342,7 +552,6 @@
                         <p class="text-sm mt-0.5">Mercado st. Poblacion, Kabacan</p>
                     </div>
                 </div>
-
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
