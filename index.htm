@@ -14,8 +14,56 @@
         details summary::-webkit-details-marker { display: none; }
     </style>
 </head>
-<body class="bg-[#fafaff] text-slate-800 antialiased selection:bg-indigo-500 selection:text-white overflow-x-hidden">
 
+<body <!-- START: TOP URGENCY & REFERRAL BANNER -->
+<div class="bg-indigo-900 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium sticky top-0 z-50 shadow-md">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-2">
+        <span>🎁 <span class="text-yellow-400 font-bold">Best Deal:</span> Share the link for 30% OFF right now. Invite 3 people to get your setup completely <span class="underline decoration-yellow-400 font-bold text-yellow-300">FREE</span>!</span>
+        <button onclick="toggleShareModal()" class="bg-yellow-500 hover:bg-yellow-400 text-indigo-950 text-xs px-3 py-1 rounded-md font-bold transition shadow active:scale-95">
+            Get Referral Code & QR 🔗
+        </button>
+    </div>
+</div>
+
+<!-- POPUP MODAL: REFERRAL & QR SYSTEM -->
+<div id="share-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 relative animate-in fade-in duration-200">
+        <button onclick="toggleShareModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-lg">&times;</button>
+
+        <h3 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">🚀 XAVIERIUM Referral Center</h3>
+        <p class="text-xs text-slate-500 mb-4">Enter your name to generate your unique tracking code. Share it to claim your discounts!</p>
+
+        <div class="space-y-4">
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Your Full Name</label>
+                <div class="flex gap-2">
+                    <input type="text" id="sharer-name-input" placeholder="e.g. John Doe" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:border-indigo-500">
+                    <button onclick="generateReferralLink()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-lg text-xs transition whitespace-nowrap">Generate Code</button>
+                </div>
+            </div>
+
+            <!-- Hidden by default, shows up when code is generated -->
+            <div id="referral-output-box" class="hidden bg-slate-50 p-3 rounded-lg border border-slate-200">
+                <p class="text-xs font-bold text-slate-700 mb-1">Your Unique Referral Message:</p>
+                <textarea id="referral-text-area" readonly rows="4" class="w-full text-xs bg-white p-2 border rounded font-mono text-slate-600 focus:outline-none"></textarea>
+                <button onclick="copyReferralText()" class="w-full mt-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-1.5 rounded text-xs transition flex justify-center items-center gap-1">
+                    📋 Copy Full Message & Claim 30% Off
+                </button>
+            </div>
+
+            <!-- QR Display Area -->
+            <div class="border-t border-slate-100 pt-4 text-center">
+                <p class="text-xs font-semibold text-slate-700 mb-2">Save & Share Our Official QR Graphic:</p>
+                <div class="bg-sky-50 p-2 rounded-xl inline-block border border-sky-100 max-w-[180px]">
+                    <!-- Hosting your QR Image layout safely here -->
+                    <img src="image_2b7c5b.jpg" alt="Xavierium Microsoft Office Support QR" class="w-full h-auto rounded-lg shadow-sm">
+                </div>
+                <p class="text-[10px] text-slate-400 mt-1">Friends can scan this image to connect directly to the site</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: TOP URGENCY & REFERRAL BANNER -->
     <nav class="sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-indigo-100/40 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-center gap-2.5 group">
@@ -30,6 +78,15 @@
                 <a href="#services" class="hidden sm:inline-block text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors duration-300">Offerings</a>
                 <a href="#packages" class="hidden sm:inline-block text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors duration-300">Rates</a>
                 <a href="#faq" class="hidden md:inline-block text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors duration-300">FAQ</a>
+
+                <div class="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
+                    <span class="relative flex h-2 w-2">
+                        <span id="statusRadarPing" class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"></span>
+                        <span id="statusRadarDot" class="relative inline-flex rounded-full h-2 w-2"></span>
+                    </span>
+                    <span id="statusRadarText" class="text-[10px] font-black uppercase tracking-wider text-slate-600">Checking...</span>
+                </div>
+
                 <a href="tel:09120694134" class="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-amber-500 hover:to-orange-500 text-white font-bold px-5 py-2.5 rounded-2xl text-sm transition-all duration-300 shadow-lg shadow-orange-500/20 hover:scale-[1.04]">
                     <i class="fa-solid fa-phone mr-2"></i>Call Now
                 </a>
@@ -40,15 +97,15 @@
     <header class="relative overflow-hidden py-20 lg:py-28 bg-gradient-to-b from-white via-indigo-50/10 to-[#fafaff]">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center relative z-10">
             <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-                <span class="inline-flex items-center gap-2 bg-orange-500/10 text-orange-600 font-extrabold text-xs uppercase tracking-widest px-4 py-2 rounded-full border border-orange-200/40 shadow-xs">
+                <span class="inline-flex items-center gap-2 bg-orange-500/10 text-orange-600 font-extrabold text-xs uppercase tracking-widest px-4 py-2 rounded-full border border-orange-200/40 shadow-xs animate-pulse">
                     <i class="fa-solid fa-graduation-cap"></i> Special Student Pricing Active
                 </span>
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none">
                     Microsoft Office <br class="hidden sm:inline">
-                    <span class="bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent">Activation Support</span>
+                    <span class="bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent"><b>Activation Support</b></span>
                 </h1>
                 <p class="text-lg text-slate-600 font-semibold max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                    RELIABLE STUDENT HELP. Get your academic workspace completely set up with 100% security and permanent lifetime performance.
+                    RELIABLE HELP FOR EVERYONE. Get your workspace completely set up with 100% security and <b>permanent lifetime</b> performance.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
                     <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="inline-flex items-center justify-center bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold px-7 py-4 rounded-2xl transition-all duration-300 shadow-xl shadow-indigo-500/20 hover:scale-[1.04]">
@@ -96,17 +153,47 @@
             </div>
         </div>
     </header>
-
+    <!-- START: THE HARD WAY VS XAVIERIUM WAY -->
+<section class="bg-slate-100/60 border-y border-slate-200/60 py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Why Choose XAVIERIUM </h2>
+            <p class="text-slate-500 mt-1">Skip the headaches and get back to managing your academic deadlines.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-rose-50/50 border border-rose-100 p-6 rounded-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-rose-500 text-white font-bold text-[10px] uppercase tracking-wider px-3 py-1 rounded-bl-lg">The Hard Way</div>
+                <h4 class="text-lg font-bold text-rose-950 mb-4 flex items-center gap-2">❌ DIY Troubleshooting</h4>
+                <ul class="space-y-3 text-sm text-rose-800">
+                    <li class="flex items-start gap-2"><span>⚠️</span> Spending 4+ hours digging through sketchy tech forums.</li>
+                    <li class="flex items-start gap-2"><span>⚠️</span> Risking malware downloads from suspicious file conversion hosting sites.</li>
+                    <li class="flex items-start gap-2"><span>⚠️</span> Getting frustrated by convoluted scripts that break your operating system registry.</li>
+                    <li class="flex items-start gap-2"><span>⚠️</span> Missing critical assignment deadlines because apps simply won't open.</li>
+                </ul>
+            </div>
+            <div class="bg-emerald-50/60 border border-emerald-100 p-6 rounded-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-emerald-500 text-white font-bold text-[10px] uppercase tracking-wider px-3 py-1 rounded-bl-lg">The Easy Way</div>
+                <h4 class="text-lg font-bold text-emerald-950 mb-4 flex items-center gap-2">✅ The XAVIERIUM Overhaul</h4>
+                <ul class="space-y-3 text-sm text-emerald-800">
+                    <li class="flex items-start gap-2"><span>✨</span> Fast, optimized support deployment tailored perfectly the first time.</li>
+                    <li class="flex items-start gap-2"><span>✨</span> 100% clean device configurations with zero risks to personal user files.</li>
+                    <li class="flex items-start gap-2"><span>✨</span> Clear, direct orientation steps custom built for Windows or macOS.</li>
+                    <li class="flex items-start gap-2"><span>✨</span> Completed in minutes so you can get right back to finishing school tasks.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END: THE HARD WAY VS XAVIERIUM WAY -->
     <section id="comparison" class="py-24 bg-white border-y border-indigo-50/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
                 <span class="text-xs font-black text-red-600 uppercase tracking-widest block bg-red-50 inline-block px-3 py-1 rounded-md border border-red-100">Stop Struggling with Deadlines</span>
-                <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">The Transformation Speak For Itself</h2>
+                <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">The Transformation Speaks For Itself</h2>
                 <p class="text-slate-600 font-semibold">Don't let expiration warnings block your typing workflow. See how cleanly we restore your suite.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-10 items-stretch max-w-4xl mx-auto">
-
                 <div class="bg-white rounded-3xl border-2 border-red-100 shadow-xl overflow-hidden flex flex-col justify-between">
                     <div>
                         <div class="bg-red-50 border-b border-red-100 px-5 py-4 flex items-center gap-3">
@@ -118,7 +205,6 @@
                                 <span class="text-[11px] text-red-500 font-medium block">Microsoft Office Not Activated</span>
                             </div>
                         </div>
-
                         <div class="p-8 space-y-6 bg-slate-50/50">
                             <div class="flex items-center justify-center gap-6 py-4 border border-dashed border-slate-200 rounded-2xl bg-white">
                                 <div class="flex flex-col items-center opacity-30 grayscale filter">
@@ -134,13 +220,11 @@
                                     <span class="text-[10px] font-bold mt-1">PPT</span>
                                 </div>
                             </div>
-
                             <p class="text-sm font-bold text-slate-700 text-center leading-relaxed">
                                 "<span class="text-red-600 font-black">View Only Mode:</span> Editing is completely disabled because your software product is unlicensed."
                             </p>
                         </div>
                     </div>
-
                     <div class="bg-red-500 text-white p-4 text-center text-xs font-black uppercase tracking-widest">
                         UNLICENSED PRODUCT
                     </div>
@@ -155,10 +239,9 @@
                             </div>
                             <div>
                                 <span class="text-xs font-black text-emerald-700 tracking-tight uppercase block">SUCCESSFULLY ACTIVATED</span>
-                                <span class="text-[11px] text-emerald-600 font-medium block">All System Operational & Fully Unlocked</span>
+                                <span class="text-[11px] text-emerald-600 font-medium block">All Systems Operational & Fully Unlocked</span>
                             </div>
                         </div>
-
                         <div class="p-8 space-y-6 bg-white">
                             <div class="flex items-center justify-center gap-6 py-4 border border-emerald-100 rounded-2xl bg-emerald-50/20">
                                 <div class="flex flex-col items-center">
@@ -174,18 +257,15 @@
                                     <span class="text-[10px] font-extrabold text-orange-600 mt-1">PPT</span>
                                 </div>
                             </div>
-
                             <p class="text-sm font-bold text-slate-800 text-center leading-relaxed">
                                 <span class="text-emerald-600 font-black">Full Features Unlocked:</span> Type documents, compute complex datasheets, and execute layout transitions without limits.
                             </p>
                         </div>
                     </div>
-
                     <div class="bg-emerald-500 text-white p-4 text-center text-xs font-black uppercase tracking-widest">
                         LIFETIME LICENSE ACTIVE
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -193,11 +273,9 @@
     <section id="about" class="py-24 bg-[#fafaff] relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
-
                 <div class="lg:col-span-5 flex justify-center order-last lg:order-first">
                     <div class="relative group w-full max-w-sm">
                         <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 via-indigo-500 to-blue-600 rounded-3xl blur-md opacity-25"></div>
-
                         <div class="relative bg-white border border-slate-100 p-8 rounded-3xl text-center shadow-lg">
                             <a href="https://www.facebook.com/profile.php?id=61584304726156" target="_blank" class="block relative inline-block mb-4">
                                 <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-full blur opacity-50"></div>
@@ -206,10 +284,8 @@
                                     <i class="fa-brands fa-facebook-f"></i>
                                 </div>
                             </a>
-
                             <h3 class="text-2xl font-black text-slate-900 tracking-tight">Kym Xavier Alamis</h3>
                             <p class="text-sm font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-1 uppercase tracking-wider">Reliable Student Support</p>
-
                             <div class="mt-6 pt-6 border-t border-slate-200/60 grid grid-cols-2 gap-4 text-left">
                                 <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-xs">
                                     <span class="block text-[10px] font-black text-orange-500 uppercase tracking-widest">Pricing</span>
@@ -220,7 +296,6 @@
                                     <span class="block text-sm font-extrabold text-slate-800 mt-1">Ultra Fast</span>
                                 </div>
                             </div>
-
                             <a href="https://www.facebook.com/profile.php?id=61584304726156" target="_blank" class="mt-6 inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-indigo-600 transition-colors duration-300">
                                 <i class="fa-brands fa-facebook text-base text-indigo-600"></i> View Personal Profile <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                             </a>
@@ -235,7 +310,6 @@
                             Meet the Student Behind XAVIERIUM
                         </h2>
                     </div>
-
                     <div class="text-slate-600 font-medium space-y-4 leading-relaxed text-base sm:text-lg">
                         <p>
                             Hey! I'm <strong class="text-slate-900">Kym Xavier Alamis</strong>. As a student myself, I know exactly how frustrating it is when your productivity tools lock up or expire right before a major, high-stakes deadline.
@@ -247,7 +321,6 @@
                             I don't claim to be a high-end corporate professional—I am just a reliable, tech-savvy fellow student who knows how to properly and safely activate your software. When you ask me for help, you get simple, honest assistance, absolute digital safety, and local peer support you can count on anytime.
                         </p>
                     </div>
-
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2 text-sm font-bold text-slate-800">
                         <div class="flex items-center gap-2.5">
                             <i class="fa-solid fa-graduation-cap text-orange-500 text-base"></i> Trusted by Local Students
@@ -325,10 +398,21 @@
 
     <section id="packages" class="py-24 bg-[#fafaff] border-t border-indigo-50/50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-xs font-black text-amber-600 uppercase tracking-widest block">Transparent Options</span>
-                <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">Student-Friendly Package Rates</h2>
-                <p class="text-slate-600 font-semibold">High value, transparent setup assistance optimized directly for devices.</p>
+            <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+                <span class="text-xs font-black text-amber-600 uppercase tracking-widest block">Interactive Compatibility Tool</span>
+                <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">Select Your System Requirements</h2>
+                <p class="text-slate-600 font-semibold">Toggle your specific computer framework to review custom deployment structures.</p>
+            </div>
+
+            <div class="flex justify-center mb-10">
+                <div class="bg-slate-200 p-1.5 rounded-2xl inline-flex gap-2 border border-slate-300/40 shadow-inner">
+                    <button id="tabWindowsBtn" class="px-6 py-2.5 rounded-xl text-xs font-black bg-white text-slate-900 shadow-sm transition-all duration-300" onclick="toggleOSArchitecture('windows')">
+                        <i class="fa-brands fa-windows mr-1.5 text-indigo-600"></i>WINDOWS ARCHITECTURE
+                    </button>
+                    <button id="tabMacBtn" class="px-6 py-2.5 rounded-xl text-xs font-black text-slate-500 hover:text-slate-900 transition-all duration-300" onclick="toggleOSArchitecture('mac')">
+                        <i class="fa-brands fa-apple mr-1.5"></i>APPLE MACOS ENGINE
+                    </button>
+                </div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 items-start">
@@ -351,7 +435,7 @@
                         </ul>
                     </div>
                     <div class="mt-8">
-                        <a href="#contact" class="block text-center bg-slate-900 hover:bg-slate-800 text-white text-xs font-black py-4 rounded-xl transition-all tracking-wider uppercase">Select Basic Help</a>
+                        <a href="#contact" id="basicPackageButton" class="block text-center bg-slate-900 hover:bg-slate-800 text-white text-xs font-black py-4 rounded-xl transition-all tracking-wider uppercase">Select Windows Basic</a>
                     </div>
                 </div>
 
@@ -359,11 +443,11 @@
                     <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-xl">POPULAR CHOICE</div>
                     <div>
                         <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest block mb-1">Full Tune-Up</span>
-                        <h3 class="text-xl font-black text-slate-900">Premium Optimization Suite</h3>
+                        <h3 id="premiumCardTitle" class="text-xl font-black text-slate-900">Premium Optimization Suite</h3>
                         <p class="text-xs text-slate-500 font-medium mt-1">Complete installation paired with device cleaning.</p>
                         <hr class="my-6 border-slate-200/60">
                         <ul class="space-y-4">
-                            <li class="flex items-center gap-3 text-sm font-bold text-slate-700">
+                            <li id="premiumFeature1" class="flex items-center gap-3 text-sm font-bold text-slate-700">
                                 <i class="fa-solid fa-circle-check text-indigo-600"></i> MS 365 Cloud Suite Configuration
                             </li>
                             <li class="flex items-center gap-3 text-sm font-bold text-slate-700">
@@ -372,13 +456,13 @@
                             <li class="flex items-center gap-3 text-sm font-bold text-slate-700">
                                 <i class="fa-solid fa-circle-check text-indigo-600"></i> Performance Clean (Temp File Removal)
                             </li>
-                            <li class="flex items-center gap-3 text-sm font-bold text-slate-700">
+                            <li id="premiumFeature4" class="flex items-center gap-3 text-sm font-bold text-slate-700">
                                 <i class="fa-solid fa-circle-check text-indigo-600"></i> Laptop Speed Optimization Audit
                             </li>
                         </ul>
                     </div>
                     <div class="mt-8">
-                        <a href="#contact" class="block text-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-purple-600 hover:to-indigo-600 text-white text-xs font-black py-4 rounded-xl transition-all tracking-wider uppercase shadow-md shadow-indigo-500/10">Select Premium Support</a>
+                        <a href="#contact" id="premiumPackageButton" class="block text-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-purple-600 hover:to-indigo-600 text-white text-xs font-black py-4 rounded-xl transition-all tracking-wider uppercase shadow-md shadow-indigo-500/10">Select Windows Premium</a>
                     </div>
                 </div>
             </div>
@@ -391,7 +475,6 @@
                 <span class="text-xs font-black text-indigo-600 uppercase tracking-widest block">Got Questions?</span>
                 <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">Frequently Asked Questions</h2>
             </div>
-
             <div class="space-y-4">
                 <details class="group bg-white border border-indigo-50/60 rounded-2xl shadow-xs overflow-hidden" open>
                     <summary class="flex items-center justify-between p-6 cursor-pointer font-black text-base text-slate-900 select-none outline-none">
@@ -423,37 +506,71 @@
     <section id="contact" class="py-24 bg-[#fafaff] border-t border-indigo-50/60 relative overflow-hidden">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid md:grid-cols-12 gap-8 items-stretch">
-
                 <div class="md:col-span-7 bg-white rounded-3xl p-8 shadow-xl shadow-indigo-500/5 border border-indigo-50/50 flex flex-col justify-between">
                     <div>
                         <div class="mb-6 space-y-1">
                             <h2 class="text-2xl font-black text-slate-900 tracking-tight">Have a Question or Suggestion?</h2>
-                            <p class="text-slate-500 text-xs font-medium">Fill out the fields below to send an automated request cleanly straight to my inbox.</p>
+                            <p class="text-slate-500 text-xs font-medium">Fill out the fields below to submit directly to my inbox and seamlessly trigger a direct message duplicate to my Facebook Page.</p>
                         </div>
 
                         <form id="ajaxForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
-                            <input type="hidden" name="access_key" value="b5a8f988-9d65-4e77-8e05-4648cf281ff0">
-                            <input type="hidden" name="subject" value="New Setup Request from XAVIERIUM Site">
-                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+    <input type="hidden" name="access_key" value="b5a8f988-9d65-4e77-8e05-4648cf281ff0">
+    <input type="hidden" name="subject" value="New Setup Request from XAVIERIUM Site">
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="space-y-1">
-                                    <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Your Name</label>
-                                    <input type="text" name="name" required placeholder="Juan Dela Cruz" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300">
-                                </div>
-                                <div class="space-y-1">
-                                    <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Email Address</label>
-                                    <input type="email" name="email" required placeholder="juan@example.com" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300">
-                                </div>
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Your Message / Question</label>
-                                <textarea rows="4" name="message" required placeholder="How can I help you today?" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300"></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3.5 rounded-2xl transition-all duration-300 shadow-md text-sm flex items-center justify-center gap-2 hover:scale-[1.02]">
-                                Send Message <i class="fa-solid fa-paper-plane text-xs"></i>
-                            </button>
-                        </form>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="space-y-1">
+            <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Your Name</label>
+            <input type="text" id="formCustomerName" name="name" required placeholder="Juan Dela Cruz" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300">
+        </div>
+        <div class="space-y-1">
+            <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Email Address</label>
+            <input type="email" name="email" required placeholder="juan@example.com" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300">
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="space-y-1">
+            <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Referred By (Friend's Code)</label>
+            <input type="text" id="form-ref-code" name="friend_referral_code" placeholder="Optional (e.g. XV-JOHN-4821)" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] font-mono focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300">
+        </div>
+        <div class="space-y-1">
+            <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Your Own Share/Claim Code</label>
+            <input type="text" id="form-my-code" name="my_own_sharing_code" placeholder="Generate via top bar system" readonly class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-slate-100 font-mono text-slate-500 cursor-not-allowed outline-none transition-all duration-300">
+        </div>
+    </div>
+
+    <div class="space-y-1">
+        <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Your Message / Selected Error</label>
+        <textarea id="form-message" rows="4" name="message" required placeholder="Select an error below or tell us how we can help..." class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300 resize-none"></textarea>
+    </div>
+
+    <div id="troubleshoot" class="max-w-3xl mx-auto my-6 scroll-mt-20">
+        <div class="p-6 bg-white rounded-xl border border-slate-200">
+            <h3 class="text-base font-bold text-slate-800 mb-2">What error is your MICROSOFT APPS showing right now?</h3>
+            <p class="text-xs text-slate-500 mb-4">Select your software block below to evaluate the technical cleanup process and turnaround window:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                <button type="button" onclick="showResolution('unlicensed', this)" class="error-btn p-3 text-left border rounded-lg hover:bg-slate-50 font-medium text-xs text-slate-700 transition focus:outline-none">
+                    ⚠️ "Product Unlicensed"
+                </button>
+                <button type="button" onclick="showResolution('viewonly', this)" class="error-btn p-3 text-left border rounded-lg hover:bg-slate-50 font-medium text-xs text-slate-700 transition focus:outline-none">
+                    🔒 "View Only / Cannot Edit"
+                </button>
+                <button type="button" onclick="showResolution('deactivated', this)" class="error-btn p-3 text-left border rounded-lg hover:bg-slate-50 font-medium text-xs text-slate-700 transition focus:outline-none">
+                    ❌ "Product Deactivated"
+                </button>
+            </div>
+            <div id="resolution-box" class="hidden p-4 bg-indigo-50 border border-indigo-100 rounded-lg transition-all duration-300">
+                <h4 class="font-bold text-indigo-900 text-xs mb-1">⏱️ Estimated Resolution Time: <span id="resolution-time">10 Minutes</span></h4>
+                <p id="resolution-text" class="text-xs text-indigo-800"></p>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3.5 rounded-2xl transition-all duration-300 shadow-md text-sm flex items-center justify-center gap-2 hover:scale-[1.01]">
+        Send Support Request <i class="fa-solid fa-paper-plane text-xs"></i>
+    </button>
+</form>
                     </div>
                 </div>
 
@@ -465,7 +582,6 @@
                             <h3 class="text-2xl font-black tracking-tight">Connect With Me</h3>
                             <p class="text-slate-400 text-xs font-medium">Skip forms entirely—reach out directly across my primary communications gateway below.</p>
                         </div>
-
                         <div class="space-y-3">
                             <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 group/item">
                                 <div class="w-9 h-9 bg-blue-600/20 text-blue-400 rounded-xl flex items-center justify-center text-sm group-hover/item:bg-blue-600 group-hover/item:text-white transition-all duration-300">
@@ -476,7 +592,6 @@
                                     <span class="text-sm font-bold text-slate-200 mt-1 block group-hover/item:text-white transition-colors">Message XAVIERIUM / Kym</span>
                                 </div>
                             </a>
-
                             <a href="mailto:alamiskym@gmail.com" class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 group/item">
                                 <div class="w-9 h-9 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center text-sm group-hover/item:bg-emerald-500 group-hover/item:text-white transition-all duration-300">
                                     <i class="fa-solid fa-envelope"></i>
@@ -486,7 +601,6 @@
                                     <span class="text-sm font-bold text-slate-200 mt-1 block group-hover/item:text-white transition-colors">alamiskym@gmail.com</span>
                                 </div>
                             </a>
-
                             <a href="tel:09120694134" class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 group/item">
                                 <div class="w-9 h-9 bg-orange-500/20 text-orange-400 rounded-xl flex items-center justify-center text-sm group-hover/item:bg-orange-500 group-hover/item:text-white transition-all duration-300">
                                     <i class="fa-solid fa-phone"></i>
@@ -498,12 +612,10 @@
                             </a>
                         </div>
                     </div>
-
                     <div class="text-[10px] text-slate-500 font-bold pt-4 mt-4 border-t border-slate-800/60 text-center relative z-10 uppercase tracking-wide">
                        Available for setup support daily.
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -519,7 +631,6 @@
                 <p class="text-slate-300 font-medium text-base leading-relaxed">
                     I run XAVIERIUM to provide affordable tech solutions to our community while independently funding my studies. If my service helped you, any contribution is deeply appreciated!
                 </p>
-
                 <div class="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/5 backdrop-blur-md p-2.5 pl-6 rounded-2xl border border-white/10 shadow-xl w-full sm:w-auto">
                     <div class="flex items-center gap-3">
                         <span class="bg-[#007DFE] text-white text-[10px] font-black px-2 py-1 rounded-md tracking-wider uppercase">GCash</span>
@@ -530,7 +641,6 @@
                     </button>
                 </div>
             </div>
-
             <div class="md:col-span-5 flex flex-col items-center justify-center">
                 <div class="bg-white p-4 rounded-3xl shadow-2xl border border-white/10 max-w-[220px] w-full relative">
                     <img src="data/Xavierium-GCash-QR.jfif" alt="Xavierium GCash QR Code" class="w-full h-auto rounded-2xl object-cover bg-slate-50">
@@ -556,7 +666,6 @@
                         <p class="text-sm mt-0.5 group-hover:text-slate-300 font-medium transition-colors">09120694134</p>
                     </div>
                 </a>
-
                 <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent transition-all duration-300 group">
                     <div class="w-11 h-11 bg-slate-900 text-indigo-400 rounded-xl flex items-center justify-center text-base group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-inner">
                         <i class="fa-brands fa-facebook-f"></i>
@@ -566,7 +675,6 @@
                         <p class="text-sm mt-0.5 group-hover:text-slate-300 font-medium transition-colors">Follow & Message Me</p>
                     </div>
                 </a>
-
                 <div class="flex items-center gap-4 p-4 rounded-2xl border border-transparent">
                     <div class="w-11 h-11 bg-slate-900 text-emerald-500 rounded-xl flex items-center justify-center text-base shadow-inner">
                         <i class="fa-solid fa-location-dot"></i>
@@ -577,7 +685,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-semibold tracking-wide">
                 <p>&copy; 2026 XAVIERIUM. Reliable Peer-to-Peer Student Tech Support.</p>
                 <div class="flex items-center gap-2 text-emerald-500 font-black tracking-widest uppercase">
@@ -587,39 +694,97 @@
         </div>
     </footer>
 
-    <script>
-        const form = document.getElementById('ajaxForm');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
+   <!-- START: XAVIERIUM CORE REFERRAL SCRIPT ENGINE -->
+<script>
+    // Modal Toggle Control
+    function toggleShareModal() {
+        const modal = document.getElementById('share-modal');
+        modal.classList.toggle('hidden');
+    }
 
-            const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = 'Sending Message... <i class="fa-solid fa-spinner animate-spin ml-2"></i>';
-            btn.disabled = true;
+    // Generate Referral string mapping logic
+    function generateReferralLink() {
+        const nameInput = document.getElementById('sharer-name-input').value.trim();
+        if (!nameInput) {
+            alert("Please input your full name to generate a tracking voucher code.");
+            return;
+        }
 
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: json
-            })
-            .then(async (response) => {
-                if (response.status == 200) {
-                    alert("Message sent cleanly and completely directly to Kym's inbox! Thank you.");
-                    form.reset();
-                } else {
-                    alert("Something went wrong. Please check your form implementation settings.");
-                }
-            })
-            .catch(error => { alert("Network transaction failed. Please use alternative verification routes on the right."); })
-            .then(() => {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            });
+        // Generate a unique alpha-numeric string based on their name safely
+        const cleanName = nameInput.replace(/[^a-zA-Z0-9]/g, "").toUpperCase().substring(0, 5);
+        const uniqueId = Math.floor(1000 + Math.random() * 9000);
+        const trackingCode = `XV-${cleanName}-${uniqueId}`;
+
+        // Links requested
+        const fbLink = "https://www.facebook.com/share/1BV7cmjAUd/";
+        const webLink = "https://xavierium.github.io/Microsoft-Office-Setup.github.io/";
+
+        // Construct highly persuasive, high-converting copy
+        const finalMessage = `Hey! If your Microsoft Office is showing "Product Unlicensed" or "View Only" errors, use XAVIERIUM to fix it instantly.
+
+Scan our official QR graphic or click the links below to connect:
+🌐 Website: ${webLink}
+📱 Facebook: ${fbLink}
+
+🎁 Mention my exclusive referral code [ ${trackingCode} ] on the form to get priority support line placement, and it helps me unlock student perks too!`;
+
+        // Output adjustments
+        document.getElementById('referral-text-area').value = finalMessage;
+        document.getElementById('referral-output-box').classList.remove('hidden');
+
+        // Automatically synchronize into the form fields below so it's ready for email capture
+        const formMyCode = document.getElementById('form-my-code');
+        if (formMyCode) formMyCode.value = trackingCode;
+
+        const formMessage = document.getElementById('form-message');
+        if (formMessage) {
+            formMessage.value = `[SHARER STATUS ACTIVATED] Code: ${trackingCode}. I have shared the system links and QR code to my classmates. Please apply my 30% discount code status to this entry!`;
+        }
+    }
+
+    // Copy String and notify user
+    function copyReferralText() {
+        const textEl = document.getElementById('referral-text-area');
+        textEl.select();
+        textEl.setSelectionRange(0, 99999); // Mobile compatibility
+
+        navigator.clipboard.writeText(textEl.value).then(() => {
+            alert("🎉 Awesome! Full referral message copied to clipboard. Paste this into your group chats or class threads. Your 30% discount text state has been linked below in the form!");
+            toggleShareModal();
+
+            // Smooth scroll direct navigation down to form section
+            const contactSection = document.getElementById('contact');
+            if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
         });
-    </script>
+    }
 
+    // Standard interactive troubleshooting tool map
+    const resolutions = {
+        unlicensed: "We cleanly target and wipe out corrupted cache registries and token blocks causing the 'Product Unlicensed' validation loop. Your workspace environment is restored in less than 15 minutes.",
+        viewonly: "The 'View Only' restriction blocks user files when active trial flags expire. We safely strip this access lock directly so editing, formatting and saving profiles are active immediately.",
+        deactivated: "Deactivation dialog banners instantly disconnect app layouts. We perform an internal system script optimization pass to establish stable, uninhibited workspace integrity safely without user file risk."
+    };
+
+    function showResolution(key, element) {
+        const box = document.getElementById('resolution-box');
+        const text = document.getElementById('resolution-text');
+        box.classList.remove('hidden');
+        text.textContent = resolutions[key];
+
+        document.querySelectorAll('.error-btn').forEach(btn => {
+            btn.classList.remove('border-indigo-500', 'bg-indigo-50/50', 'ring-2', 'ring-indigo-500');
+        });
+        element.classList.add('border-indigo-500', 'bg-indigo-50/50', 'ring-2', 'ring-indigo-500');
+    }
+
+    // Basic Form intercept reminder feedback
+    function handleForm(e) {
+        e.preventDefault();
+        alert("Support request received! Your custom sharing tracking indicators are bundled in this request. If 3 users sign up using your code layout, our team will process your setup fully free of charge.");
+        e.target.reset();
+    }
+</script>
+<!-- END: XAVIERIUM CORE REFERRAL SCRIPT ENGINE -->
+<!-- END: XAVIERIUM INTERACTION SCRIPTS -->
 </body>
 </html>
