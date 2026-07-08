@@ -14,11 +14,160 @@
         details summary::-webkit-details-marker { display: none; }
     </style>
 </head>
+<!-- =========================================================================
+     👉 REPLACE YOUR OLD SCRIPT SECTION WITH THIS UPDATED SHARING TARGET SCRIPT
+     ========================================================================= -->
+<script>
+    // Global variable to track the generated voucher code
+    let userGeneratedCode = "";
 
+    // Controls opening and closing the modal popup box
+    function toggleShareModal() {
+        const modal = document.getElementById('share-modal');
+        if (modal) {
+            modal.classList.toggle('hidden');
+        }
+    }
+
+    // 1. GENERATES THE CODE, UNLOCKS THE MODAL ACTIONS, AND INJECTS INTO YOUR FORM
+    function generateReferralLink() {
+        const nameInput = document.getElementById('sharer-name-input');
+        if (!nameInput || !nameInput.value.trim()) {
+            alert("Please type your full name first to register your custom student voucher code.");
+            return;
+        }
+
+        const nameValue = nameInput.value.trim();
+
+        // Clean user's name to alphanumeric and create a custom layout code format (e.g., XV-JUAN-4829)
+        const cleanName = nameValue.replace(/[^a-zA-Z0-9]/g, "").toUpperCase().substring(0, 5);
+        const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+        userGeneratedCode = `XV-${cleanName}-${randomSuffix}`;
+
+        // Update the code view inside the modal popup window
+        const displayCode = document.getElementById('display-code-text');
+        if (displayCode) {
+            displayCode.textContent = userGeneratedCode;
+        }
+
+        // Reveal the Step 2 Facebook options block inside the modal layout
+        const outputBox = document.getElementById('referral-output-box');
+        if (outputBox) {
+            outputBox.classList.remove('hidden');
+        }
+
+        // AUTOMATICALLY DROP THE CODE DIRECTLY INTO YOUR FORM FIELDS BELOW
+        const formMyCode = document.getElementById('form-my-code');
+        if (formMyCode) {
+            formMyCode.value = userGeneratedCode;
+        }
+
+        // FORCE-INJECT CAMPAIGN PROOF INTO TEXTAREA SO IT ARRIVES IN YOUR GMAIL
+        const messageTextarea = document.getElementById('form-message');
+        if (messageTextarea) {
+            messageTextarea.value = `[ACTION REQUIRED - 50% OFF CLAIM VERIFICATION]\n--------------------------------------------------\nSharer Name: ${nameValue}\nGenerated Tracker Code: ${userGeneratedCode}\n\nStatus: User has generated code. Awaiting screenshot proof that they shared our Facebook Campaign Post (https://www.facebook.com/share/p/1D8YBJyL6m/) AND distributed the official QR code graphic (qr.jfif).\n--------------------------------------------------`;
+        }
+    }
+
+    // Helper button logic to copy the short identifier string to clipboard
+    function copyOnlyCode() {
+        if (!userGeneratedCode) return;
+        navigator.clipboard.writeText(userGeneratedCode).then(() => {
+            alert(`📋 Tracking Code [ ${userGeneratedCode} ] copied! Proceed to share parameters.`);
+        }).catch(err => {
+            console.error("Clipboard failure: ", err);
+        });
+    }
+
+    // 2. OPENS THE EXACT TARGET FACEBOOK POST IN A POPUP WINDOW FOR THEM TO SHARE
+    function shareToFacebook() {
+        const targetUrl = "https://www.facebook.com/share/p/1D8YBJyL6m/";
+        const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(targetUrl)}`;
+
+        // Open the specific Facebook post window layout properties
+        window.open(fbShareUrl, '_blank', 'width=600,height=400,resizable=yes,scrollbars=yes');
+
+        // Close modal box view and focus user smoothly onto form instructions
+        toggleShareModal();
+        const contactBlock = document.getElementById('ajaxForm');
+        if (contactBlock) {
+            contactBlock.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    // 3. HANDLES TROUBLESHOOTING MATRIX OPTION SELECTION
+    const resolutions = {
+        unlicensed: "We targetedly clear out corrupted registry parameters and activation token cache files blocking licensing flags. Your apps will pass validation correctly in under 15 minutes.",
+        viewonly: "The 'View Only' locking status occurs when core configuration keys become invalid. We drop these restrictions safely so you can modify and export your file entries instantly.",
+        deactivated: "Deactivation dialog blocks disrupt workflow. We run an automated workspace pass to re-establish environment layout integrity without affecting your files."
+    };
+
+    function showResolution(key, element) {
+        const box = document.getElementById('resolution-box');
+        const text = document.getElementById('resolution-text');
+        const clock = document.getElementById('resolution-time');
+
+        if (box && text && clock) {
+            text.textContent = resolutions[key];
+            clock.textContent = key === 'viewonly' ? '10 Minutes' : '15 Minutes';
+            box.classList.remove('hidden');
+        }
+
+        // Apply active visual styling indicators to selected button elements
+        document.querySelectorAll('.error-btn').forEach(btn => {
+            btn.classList.remove('border-indigo-600', 'bg-indigo-50/50', 'ring-2', 'ring-indigo-600');
+        });
+        element.classList.add('border-indigo-600', 'bg-indigo-50/50', 'ring-2', 'ring-indigo-600');
+    }
+
+    // 4. HANDLES FORM SUBMISSION TO WEB3FORMS (EMAILS YOUR GMAIL)
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById('ajaxForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
+
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn ? btn.innerHTML : '';
+
+                if (btn) {
+                    btn.innerHTML = 'Sending Code Verification... <i class="fa-solid fa-spinner animate-spin ml-1.5"></i>';
+                    btn.disabled = true;
+                }
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: json
+                })
+                .then(async (response) => {
+                    if (response.status == 200) {
+                        alert("Verification submission received! Check your email inbox shortly for support queue deployment logs.");
+                        form.reset();
+                    } else {
+                        alert("Submission error. Please ensure your Web3Forms token keys match.");
+                    }
+                })
+                .catch(error => {
+                    alert("Network configuration link error. Please check your data connection parameters.");
+                })
+                .then(() => {
+                    if (btn) {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    }
+                });
+            });
+        }
+    });
+</script>
 <body <!-- START: TOP URGENCY & REFERRAL BANNER -->
 <div class="bg-indigo-900 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium sticky top-0 z-50 shadow-md">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-2">
-        <span>🎁 <span class="text-yellow-400 font-bold">Best Deal:</span> Share the link for 30% OFF right now. Invite 3 people to get your setup completely <span class="underline decoration-yellow-400 font-bold text-yellow-300">FREE</span>!</span>
+        <span>🎁 <span class="text-yellow-400 font-bold">Best Deal:</span> Share the link for 50% OFF right now. Invite 3 people to get your setup completely <span class="underline decoration-yellow-400 font-bold text-yellow-300">FREE</span>!</span>
         <button onclick="toggleShareModal()" class="bg-yellow-500 hover:bg-yellow-400 text-indigo-950 text-xs px-3 py-1 rounded-md font-bold transition shadow active:scale-95">
             Get Referral Code & QR 🔗
         </button>
@@ -26,39 +175,66 @@
 </div>
 
 <!-- POPUP MODAL: REFERRAL & QR SYSTEM -->
-<div id="share-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 relative animate-in fade-in duration-200">
-        <button onclick="toggleShareModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-lg">&times;</button>
+<div id="share-modal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-md z-[100] flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border-2 border-amber-400 relative animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
 
-        <h3 class="text-xl font-bold text-slate-900 mb-1 flex items-center gap-2">🚀 XAVIERIUM Referral Center</h3>
-        <p class="text-xs text-slate-500 mb-4">Enter your name to generate your unique tracking code. Share it to claim your discounts!</p>
+        <div class="absolute top-0 left-0 right-0 bg-gradient-to-r from-amber-500 to-orange-600 text-white text-[11px] font-black uppercase tracking-widest text-center py-1.5 shadow-sm">
+            🔥 MEGA STUDENT DISCOUNT LIFELINE DETECTED 🔥
+        </div>
 
-        <div class="space-y-4">
-            <div>
-                <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Your Full Name</label>
+        <button onclick="toggleShareModal()" class="absolute top-6 right-4 text-slate-400 hover:text-slate-600 font-bold text-xl p-1 transition">&times;</button>
+
+        <div class="mt-4 text-center">
+            <h3 class="text-2xl font-black text-slate-900 tracking-tight flex items-center justify-center gap-2">
+                💰 Claim Your 50% OFF Voucher
+            </h3>
+            <p class="text-xs text-rose-600 font-bold mt-1 bg-rose-50 px-3 py-1 rounded-full inline-block border border-rose-100">
+                ⚠️ Verification Required: Effort = Big Rewards!
+            </p>
+        </div>
+
+        <div class="space-y-4 mt-4">
+            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                <span class="inline-block bg-indigo-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider mb-2">Step 1</span>
+                <label class="block text-xs font-black text-slate-700 uppercase tracking-wide mb-1">Your Registered Full Name</label>
                 <div class="flex gap-2">
-                    <input type="text" id="sharer-name-input" placeholder="e.g. John Doe" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:border-indigo-500">
-                    <button onclick="generateReferralLink()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-lg text-xs transition whitespace-nowrap">Generate Code</button>
+                    <input type="text" id="sharer-name-input" placeholder="e.g. Juan Dela Cruz" class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-600 bg-white">
+                    <button onclick="generateReferralLink()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition whitespace-nowrap active:scale-95 shadow-sm">Generate</button>
                 </div>
             </div>
 
-            <!-- Hidden by default, shows up when code is generated -->
-            <div id="referral-output-box" class="hidden bg-slate-50 p-3 rounded-lg border border-slate-200">
-                <p class="text-xs font-bold text-slate-700 mb-1">Your Unique Referral Message:</p>
-                <textarea id="referral-text-area" readonly rows="4" class="w-full text-xs bg-white p-2 border rounded font-mono text-slate-600 focus:outline-none"></textarea>
-                <button onclick="copyReferralText()" class="w-full mt-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-1.5 rounded text-xs transition flex justify-center items-center gap-1">
-                    📋 Copy Full Message & Claim 30% Off
+            <div id="referral-output-box" class="hidden space-y-3 bg-amber-50/60 p-4 rounded-2xl border border-amber-200 animate-in slide-in-from-bottom-2 duration-300">
+                <div>
+                    <span class="inline-block bg-amber-500 text-white text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider mb-1">Step 2</span>
+                    <p class="text-xs font-bold text-slate-800 leading-tight">Post our official link on Facebook, or copy your campaign text block below:</p>
+                </div>
+
+                <div class="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200">
+                    <div>
+                        <p class="text-[9px] uppercase font-black tracking-wider text-slate-400">Your Unique Tracker ID</p>
+                        <p id="display-code-text" class="text-sm font-mono font-black text-indigo-600">XV-XXXX-0000</p>
+                    </div>
+                    <button onclick="copyOnlyCode()" class="bg-slate-900 hover:bg-slate-800 text-white text-[11px] font-bold py-1.5 px-3 rounded-lg transition active:scale-95">
+                        Copy Code
+                    </button>
+                </div>
+
+                <button onclick="shareToFacebook()" class="w-full bg-[#1877F2] hover:bg-[#166FE5] text-white font-bold py-3 rounded-xl text-xs transition flex justify-center items-center gap-2 shadow-md active:scale-95">
+                    <i class="fa-brands fa-facebook text-base"></i> Click to Post & Share Link on Facebook
                 </button>
             </div>
 
-            <!-- QR Display Area -->
-            <div class="border-t border-slate-100 pt-4 text-center">
-                <p class="text-xs font-semibold text-slate-700 mb-2">Save & Share Our Official QR Graphic:</p>
-                <div class="bg-sky-50 p-2 rounded-xl inline-block border border-sky-100 max-w-[180px]">
-                    <!-- Hosting your QR Image layout safely here -->
-                    <img src="image_2b7c5b.jpg" alt="Xavierium Microsoft Office Support QR" class="w-full h-auto rounded-lg shadow-sm">
+            <div class="border-t border-slate-200 pt-4 text-center bg-sky-50/50 p-3 rounded-2xl border border-sky-100">
+                <div class="mb-2">
+                    <span class="inline-block bg-sky-600 text-white text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider mb-1">Step 3</span>
+                    <p class="text-xs font-black text-slate-800">Save & Distribute Our Official Support QR Image</p>
+                    <p class="text-[10px] text-rose-600 font-bold">📢 MUST provide a Screenshot Proof of share inside the form block below to qualify for 50% OFF!</p>
                 </div>
-                <p class="text-[10px] text-slate-400 mt-1">Friends can scan this image to connect directly to the site</p>
+
+                <div class="bg-white p-3 rounded-2xl inline-block border border-sky-200 max-w-[150px] shadow-sm hover:scale-105 transition duration-300">
+                    <img src="qr.jfif" alt="Xavierium Microsoft Office Support QR" class="w-full h-auto rounded-lg">
+                </div>
+                <p class="text-[9px] text-slate-400 mt-1.5 font-medium">Right-click or hold down image block to Save QR asset</p>
             </div>
         </div>
     </div>
