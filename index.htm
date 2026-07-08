@@ -380,7 +380,7 @@
         </div>
     </section>
 
-    <!-- Support/Donation Banner with Integrated QR Code Media Card -->
+    <!-- Support/Donation Banner with Integrated Downloadable QR Code -->
     <section id="donate" class="py-20 bg-slate-950 text-center relative overflow-hidden border-b border-slate-900">
         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-emerald-500/5 opacity-80"></div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid md:grid-cols-12 gap-10 items-center">
@@ -408,13 +408,18 @@
                 <p class="text-slate-500 text-xs font-semibold">Every coffee or donation goes a long way. Thank you! ❤️</p>
             </div>
 
-            <!-- Right QR Code Image Implementation -->
+            <!-- Right QR Code Image Implementation with Actionable Download Link -->
             <div class="md:col-span-5 flex flex-col items-center justify-center">
                 <div class="bg-white p-4 rounded-3xl shadow-2xl border border-white/10 max-w-[240px] w-full transition-transform duration-500 hover:scale-[1.03] relative group">
                     <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-500 opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500"></div>
                     <img src="Xavierium-GCash-QR.jfif" alt="Xavierium GCash QR Code" class="w-full h-auto rounded-2xl object-cover shadow-sm bg-slate-50">
                 </div>
-                <span class="text-xs text-slate-400 font-bold tracking-wider uppercase mt-4"><i class="fa-solid fa-qrcode mr-1.5 text-indigo-400"></i> Scan to Pay / Donate</span>
+                <div class="mt-4 flex flex-col items-center gap-1">
+                    <a href="Xavierium-GCash-QR.jfif" download="Xavierium-GCash-QR.jfif" class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-purple-600 hover:to-indigo-600 text-white font-extrabold px-5 py-2 rounded-xl text-xs transition-all duration-300 shadow-md shadow-indigo-500/20 hover:scale-[1.04] active:scale-[0.98]">
+                        <i class="fa-solid fa-download"></i> Download QR Code
+                    </a>
+                    <span class="text-[10px] text-slate-500 font-bold tracking-wider uppercase mt-1"><i class="fa-solid fa-qrcode mr-1"></i> Scan or Save to Pay</span>
+                </div>
             </div>
 
         </div>
