@@ -7,201 +7,182 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        /* Smooth styling for accordion details arrow */
         details summary::-webkit-details-marker { display: none; }
-        details[open] summary i { transform: rotate(180deg); }
     </style>
 </head>
 <body class="bg-[#fafaff] text-slate-800 antialiased selection:bg-indigo-500 selection:text-white overflow-x-hidden">
 
-    <!-- Premium Glassmorphic Navigation -->
     <nav class="sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-indigo-100/40 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-center gap-2 group">
-                <div class="grid grid-cols-2 gap-0.5 w-6 h-6 group-hover:rotate-12 transition-transform duration-500">
-                    <div class="bg-[#f25022] rounded-xs shadow-sm shadow-red-500/20"></div>
-                    <div class="bg-[#7fba00] rounded-xs shadow-sm shadow-green-500/20"></div>
-                    <div class="bg-[#00a4ef] rounded-xs shadow-sm shadow-blue-500/20"></div>
-                    <div class="bg-[#ffb900] rounded-xs shadow-sm shadow-yellow-500/20"></div>
+            <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-center gap-2.5 group">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-500 text-white flex items-center justify-center shadow-md shadow-indigo-500/20 group-hover:rotate-12 transition-transform duration-300">
+                    <i class="fa-solid fa-laptop-code text-sm"></i>
                 </div>
-                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-slate-900 via-[#00a4ef] to-indigo-600 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">XAVIERIUM</span>
+                <span class="font-black text-xl tracking-tight bg-gradient-to-r from-slate-900 via-indigo-600 to-blue-600 bg-clip-text text-transparent">XAVIERIUM</span>
             </a>
             <div class="flex items-center gap-6">
-                <a href="#pain-points" class="hidden sm:inline-block text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors duration-300">The Problem</a>
+                <a href="#comparison" class="hidden sm:inline-block text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors duration-300">The Problem</a>
                 <a href="#about" class="hidden sm:inline-block text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors duration-300">About Me</a>
-                <a href="#process" class="hidden sm:inline-block text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors duration-300">How It Works</a>
+                <a href="#services" class="hidden sm:inline-block text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors duration-300">Offerings</a>
                 <a href="#packages" class="hidden sm:inline-block text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors duration-300">Rates</a>
                 <a href="#faq" class="hidden md:inline-block text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors duration-300">FAQ</a>
-                <a href="tel:09120694134" class="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-orange-600 hover:to-amber-500 text-white font-bold px-5 py-2.5 rounded-2xl text-sm transition-all duration-300 shadow-lg shadow-orange-500/20 hover:scale-[1.04] active:scale-[0.98]">
+                <a href="tel:09120694134" class="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-amber-500 hover:to-orange-500 text-white font-bold px-5 py-2.5 rounded-2xl text-sm transition-all duration-300 shadow-lg shadow-orange-500/20 hover:scale-[1.04]">
                     <i class="fa-solid fa-phone mr-2"></i>Call Now
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Vibrant Header Hero Segment -->
-    <header class="relative overflow-hidden py-20 lg:py-28 bg-gradient-to-b from-white via-indigo-50/20 to-[#fafaff]">
+    <header class="relative overflow-hidden py-20 lg:py-28 bg-gradient-to-b from-white via-indigo-50/10 to-[#fafaff]">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center relative z-10">
             <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-                <span class="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 text-orange-600 font-extrabold text-xs uppercase tracking-widest px-4 py-2 rounded-full border border-orange-200/40 shadow-sm animate-pulse">
+                <span class="inline-flex items-center gap-2 bg-orange-500/10 text-orange-600 font-extrabold text-xs uppercase tracking-widest px-4 py-2 rounded-full border border-orange-200/40 shadow-xs">
                     <i class="fa-solid fa-graduation-cap"></i> Special Student Pricing Active
                 </span>
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none">
                     Microsoft Office <br class="hidden sm:inline">
-                    <span class="bg-gradient-to-r from-[#00a4ef] via-indigo-600 to-purple-600 bg-clip-text text-transparent">Activation Support</span>
+                    <span class="bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent">Activation Support</span>
                 </h1>
                 <p class="text-lg text-slate-600 font-semibold max-w-xl mx-auto lg:mx-0 leading-relaxed">
                     RELIABLE STUDENT HELP. Get your academic workspace completely set up with 100% security and permanent lifetime performance.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
-                    <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="inline-flex items-center justify-center bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-blue-600 hover:to-indigo-600 text-white font-bold px-7 py-4 rounded-2xl transition-all duration-300 shadow-xl shadow-indigo-500/20 hover:scale-[1.04] active:scale-[0.98]">
+                    <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="inline-flex items-center justify-center bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold px-7 py-4 rounded-2xl transition-all duration-300 shadow-xl shadow-indigo-500/20 hover:scale-[1.04]">
                         <i class="fa-brands fa-facebook-messenger mr-2.5 text-lg"></i> Contact XAVIERIUM
                     </a>
-                    <a href="#services" class="inline-flex items-center justify-center bg-white hover:bg-slate-50 text-slate-700 font-bold px-7 py-4 rounded-2xl transition-all duration-300 border border-slate-200 hover:border-slate-300 shadow-sm hover:scale-[1.02]">
+                    <a href="#services" class="inline-flex items-center justify-center bg-white hover:bg-slate-50 text-slate-700 font-bold px-7 py-4 rounded-2xl transition-all duration-300 border border-slate-200 shadow-xs">
                         View Offerings
                     </a>
                 </div>
             </div>
 
-            <!-- Dynamic Floating Features Card -->
             <div class="lg:col-span-5 relative flex justify-center">
-                <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-2xl shadow-indigo-100 border border-white max-w-sm w-full space-y-6 relative z-10 transition-transform duration-500 hover:scale-[1.02]">
+                <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl shadow-2xl shadow-indigo-100 border border-white max-w-sm w-full space-y-6 relative z-10">
                     <div class="flex items-center justify-between">
                         <span class="font-black text-slate-900 text-lg tracking-tight">Guaranteed Help</span>
-                        <span class="text-xs bg-emerald-500/10 text-emerald-600 font-black px-3 py-1.5 rounded-xl border border-emerald-200/40 tracking-wide uppercase">SAFE & SECURE</span>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-600 font-black px-3 py-1.5 rounded-xl border border-emerald-200/40 uppercase">SAFE & SECURE</span>
                     </div>
                     <div class="space-y-3.5">
-                        <div class="flex items-center gap-3.5 p-3.5 bg-[#fafaff] rounded-2xl border border-slate-100/50 hover:border-indigo-100 transition-all duration-300 group">
-                            <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <div class="flex items-center gap-3.5 p-3.5 bg-[#fafaff] rounded-2xl border border-slate-100/50 group">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
                                 <i class="fa-solid fa-circle-check"></i>
                             </div>
                             <span class="font-bold text-sm text-slate-700">Fully Activated Suite</span>
                         </div>
-                        <div class="flex items-center gap-3.5 p-3.5 bg-[#fafaff] rounded-2xl border border-slate-100/50 hover:border-indigo-100 transition-all duration-300 group">
-                            <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <div class="flex items-center gap-3.5 p-3.5 bg-[#fafaff] rounded-2xl border border-slate-100/50 group">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
                                 <i class="fa-solid fa-shield-halved"></i>
                             </div>
                             <span class="font-bold text-sm text-slate-700">100% Safe (No Viruses / No Scams)</span>
                         </div>
-                        <div class="flex items-center gap-3.5 p-3.5 bg-[#fafaff] rounded-2xl border border-slate-100/50 hover:border-indigo-100 transition-all duration-300 group">
-                            <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <div class="flex items-center gap-3.5 p-3.5 bg-[#fafaff] rounded-2xl border border-slate-100/50 group">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
                                 <i class="fa-solid fa-bolt"></i>
                             </div>
                             <span class="font-bold text-sm text-slate-700">Fast & Highly Stable</span>
                         </div>
                     </div>
-                    <div class="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white p-4.5 rounded-2xl text-center shadow-lg shadow-pink-500/20">
+                    <div class="bg-gradient-to-r from-orange-500 to-amber-500 text-white p-4.5 rounded-2xl text-center shadow-lg shadow-orange-500/20">
                         <p class="text-[10px] font-black uppercase tracking-widest opacity-80">Exclusive Value</p>
                         <p class="text-xl font-black mt-0.5 tracking-wider">LIFETIME LICENSE</p>
                     </div>
                 </div>
-                <!-- Cosmic Glowing Background Nodes -->
-                <div class="absolute -top-12 -right-12 w-80 h-80 bg-gradient-to-tr from-blue-300 to-indigo-400 rounded-full blur-3xl opacity-30 -z-0 animate-pulse"></div>
-                <div class="absolute -bottom-12 -left-12 w-80 h-80 bg-gradient-to-br from-pink-300 to-purple-400 rounded-full blur-3xl opacity-30 -z-0 animate-pulse"></div>
+                <div class="absolute -top-12 -right-12 w-80 h-80 bg-gradient-to-tr from-blue-300 to-indigo-400 rounded-full blur-3xl opacity-30 -z-0"></div>
+                <div class="absolute -bottom-12 -left-12 w-80 h-80 bg-gradient-to-br from-orange-200 to-amber-300 rounded-full blur-3xl opacity-30 -z-0"></div>
             </div>
         </div>
     </header>
 
-    <!-- Key Metrics Ribbon -->
-    <section class="bg-white border-y border-indigo-50/60 py-10 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div class="space-y-1 group">
-                <i class="fa-solid fa-certificate text-indigo-600 text-2xl mb-1 group-hover:scale-110 transition-transform duration-300"></i>
-                <h4 class="font-black text-slate-900 text-xs tracking-wider uppercase">ALLY ACTIVATED</h4>
-                <p class="text-xs text-slate-500 font-medium">All Features Unlocked</p>
+    <section id="comparison" class="py-24 bg-white border-y border-indigo-50/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-black text-red-600 uppercase tracking-widest block bg-red-50 inline-block px-3 py-1 rounded-md border border-red-100">Stop Struggling with Deadlines</span>
+                <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">The Transformation Speak For Itself</h2>
+                <p class="text-slate-600 font-semibold">Don't let expiration warnings block your typing workflow. See how cleanly we restore your suite.</p>
             </div>
-            <div class="space-y-1 group">
-                <i class="fa-solid fa-lock text-emerald-500 text-2xl mb-1 group-hover:scale-110 transition-transform duration-300"></i>
-                <h4 class="font-black text-slate-900 text-xs tracking-wider uppercase">SAFE & SECURE</h4>
-                <p class="text-xs text-slate-500 font-medium">No Virus | No Scam</p>
-            </div>
-            <div class="space-y-1 group">
-                <i class="fa-solid fa-key text-amber-500 text-2xl mb-1 group-hover:scale-110 transition-transform duration-300"></i>
-                <h4 class="font-black text-slate-900 text-xs tracking-wider uppercase">LIFETIME LICENSE</h4>
-                <p class="text-xs text-slate-500 font-medium">Permanent Access</p>
-            </div>
-            <div class="space-y-1 group">
-                <i class="fa-solid fa-gauge-high text-purple-500 text-2xl mb-1 group-hover:scale-110 transition-transform duration-300"></i>
-                <h4 class="font-black text-slate-900 text-xs tracking-wider uppercase">FAST & STABLE</h4>
-                <p class="text-xs text-slate-500 font-medium">Peak Office Performance</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- The "Unlicensed Word" Nightmare -->
-    <section id="pain-points" class="py-20 bg-gradient-to-b from-[#fafaff] to-white relative overflow-hidden">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid md:grid-cols-12 gap-10 items-center">
-                
-                <!-- Mock Unlicensed Interface Box -->
-                <div class="md:col-span-5 order-last md:order-first">
-                    <div class="bg-white rounded-2xl border border-red-200 shadow-xl overflow-hidden max-w-sm mx-auto">
-                        <!-- Red Unlicensed Top Warning Bar -->
-                        <div class="bg-[#ffe7e7] border-b border-red-200 px-4 py-2.5 flex items-center gap-2.5">
-                            <i class="fa-solid fa-triangle-exclamation text-red-600 text-sm"></i>
-                            <span class="text-xs font-black text-red-700 tracking-tight">PRODUCT DEACTIVATED / UNLICENSED</span>
-                        </div>
-                        <!-- Mock App Interface Screen -->
-                        <div class="p-5 space-y-4 bg-slate-50/50">
-                            <div class="h-6 bg-slate-200/70 rounded-md w-3/4 animate-pulse"></div>
-                            <div class="space-y-2 pt-2">
-                                <div class="h-3 bg-slate-200 rounded-sm w-full"></div>
-                                <div class="h-3 bg-slate-200 rounded-sm w-full"></div>
-                                <div class="h-3 bg-slate-200 rounded-sm w-5/6"></div>
+            <div class="grid md:grid-cols-2 gap-10 items-stretch max-w-4xl mx-auto">
+
+                <div class="bg-white rounded-3xl border-2 border-red-100 shadow-xl overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="bg-red-50 border-b border-red-100 px-5 py-4 flex items-center gap-3">
+                            <div class="w-7 h-7 rounded-full bg-red-500 text-white flex items-center justify-center text-xs font-black shrink-0 animate-pulse">
+                                <i class="fa-solid fa-circle-exclamation"></i>
                             </div>
-                            <!-- Blur Overlay Effect -->
-                            <div class="border border-dashed border-slate-200 rounded-xl p-4 bg-white/80 backdrop-blur-xs text-center relative">
-                                <i class="fa-solid fa-keyboard-left text-slate-300 text-xl mb-1 block"></i>
-                                <span class="text-xs font-bold text-slate-400 block">Editing is disabled because this product is unlicensed.</span>
+                            <div>
+                                <span class="text-xs font-black text-red-600 tracking-tight uppercase block">PRODUCT ACTIVATION FAILED</span>
+                                <span class="text-[11px] text-red-500 font-medium block">Microsoft Office Not Activated</span>
                             </div>
                         </div>
-                        <!-- Alert Prompt Box -->
-                        <div class="bg-amber-50 border-t border-amber-100 p-4 text-center">
-                            <span class="text-[11px] font-black text-amber-800 uppercase tracking-wider block mb-1">Pop-up Interruption</span>
-                            <p class="text-slate-600 text-xs font-medium">"Your subscription expired. Renew now to avoid losing access."</p>
+
+                        <div class="p-8 space-y-6 bg-slate-50/50">
+                            <div class="flex items-center justify-center gap-6 py-4 border border-dashed border-slate-200 rounded-2xl bg-white">
+                                <div class="flex flex-col items-center opacity-30 grayscale filter">
+                                    <i class="fa-regular fa-file-word text-3xl text-slate-600"></i>
+                                    <span class="text-[10px] font-bold mt-1">Word</span>
+                                </div>
+                                <div class="flex flex-col items-center opacity-30 grayscale filter">
+                                    <i class="fa-regular fa-file-excel text-3xl text-slate-600"></i>
+                                    <span class="text-[10px] font-bold mt-1">Excel</span>
+                                </div>
+                                <div class="flex flex-col items-center opacity-30 grayscale filter">
+                                    <i class="fa-regular fa-file-powerpoint text-3xl text-slate-600"></i>
+                                    <span class="text-[10px] font-bold mt-1">PPT</span>
+                                </div>
+                            </div>
+
+                            <p class="text-sm font-bold text-slate-700 text-center leading-relaxed">
+                                "<span class="text-red-600 font-black">View Only Mode:</span> Editing is completely disabled because your software product is unlicensed."
+                            </p>
                         </div>
+                    </div>
+
+                    <div class="bg-red-500 text-white p-4 text-center text-xs font-black uppercase tracking-widest">
+                        UNLICENSED PRODUCT
                     </div>
                 </div>
 
-                <!-- Text Presentation Area for Pain Points -->
-                <div class="md:col-span-7 space-y-5">
-                    <span class="text-xs font-black text-red-600 uppercase tracking-widest block bg-red-50 inline-block px-3 py-1 rounded-md border border-red-100">Are you facing this right now?</span>
-                    <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">
-                        Tired of Seeing <span class="text-red-600">"View Only"</span> Right Before a Deadline?
-                    </h2>
-                    <p class="text-slate-600 font-semibold leading-relaxed text-base sm:text-lg">
-                        There is nothing worse than opening your research document or presentation slides, only to find out you **cannot type or edit anything** because your software expired. 
-                    </p>
-                    
-                    <div class="space-y-3.5 pt-2">
-                        <div class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs mt-0.5 shrink-0">
-                                <i class="fa-solid fa-xmark"></i>
+                <div class="bg-white rounded-3xl border-2 border-emerald-500 shadow-2xl overflow-hidden flex flex-col justify-between relative">
+                    <div class="absolute top-0 right-0 bg-emerald-500 text-white text-[9px] font-black uppercase tracking-widest px-4 py-1 rounded-bl-xl shadow-xs">FIXED</div>
+                    <div>
+                        <div class="bg-emerald-50 border-b border-emerald-100 px-5 py-4 flex items-center gap-3">
+                            <div class="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-black shrink-0">
+                                <i class="fa-solid fa-circle-check"></i>
                             </div>
-                            <p class="text-sm font-bold text-slate-700">Locked Features: <span class="text-slate-500 font-medium">Can't edit documents, sort spreadsheets, or finalize slide transitions.</span></p>
+                            <div>
+                                <span class="text-xs font-black text-emerald-700 tracking-tight uppercase block">SUCCESSFULLY ACTIVATED</span>
+                                <span class="text-[11px] text-emerald-600 font-medium block">All System Operational & Fully Unlocked</span>
+                            </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs mt-0.5 shrink-0">
-                                <i class="fa-solid fa-xmark"></i>
+
+                        <div class="p-8 space-y-6 bg-white">
+                            <div class="flex items-center justify-center gap-6 py-4 border border-emerald-100 rounded-2xl bg-emerald-50/20">
+                                <div class="flex flex-col items-center">
+                                    <i class="fa-regular fa-file-word text-3xl text-blue-600"></i>
+                                    <span class="text-[10px] font-extrabold text-blue-600 mt-1">Word</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fa-regular fa-file-excel text-3xl text-emerald-600"></i>
+                                    <span class="text-[10px] font-extrabold text-emerald-600 mt-1">Excel</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <i class="fa-regular fa-file-powerpoint text-3xl text-orange-600"></i>
+                                    <span class="text-[10px] font-extrabold text-orange-600 mt-1">PPT</span>
+                                </div>
                             </div>
-                            <p class="text-sm font-bold text-slate-700">Constant Banner Stress: <span class="text-slate-500 font-medium">Annoying bright red alert bars eating up screen workspace.</span></p>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs mt-0.5 shrink-0">
-                                <i class="fa-solid fa-xmark"></i>
-                            </div>
-                            <p class="text-sm font-bold text-slate-700">Interruption Pop-Ups: <span class="text-slate-500 font-medium">Constant subscription warnings closing your current window down mid-work.</span></p>
+
+                            <p class="text-sm font-bold text-slate-800 text-center leading-relaxed">
+                                <span class="text-emerald-600 font-black">Full Features Unlocked:</span> Type documents, compute complex datasheets, and execute layout transitions without limits.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="pt-4">
-                        <a href="#process" class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-teal-600 hover:to-emerald-600 text-white font-extrabold px-6 py-3.5 rounded-2xl text-sm transition-all duration-300 shadow-lg shadow-emerald-500/10 hover:scale-[1.02]">
-                            Get Lifetime Activation Help <i class="fa-solid fa-arrow-down text-xs"></i>
-                        </a>
+                    <div class="bg-emerald-500 text-white p-4 text-center text-xs font-black uppercase tracking-widest">
+                        LIFETIME LICENSE ACTIVE
                     </div>
                 </div>
 
@@ -209,20 +190,18 @@
         </div>
     </section>
 
-    <!-- About Segment -->
-    <section id="about" class="py-24 bg-white relative overflow-hidden">
+    <section id="about" class="py-24 bg-[#fafaff] relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
 
-                <!-- Interactive Profile Card Component -->
                 <div class="lg:col-span-5 flex justify-center order-last lg:order-first">
                     <div class="relative group w-full max-w-sm">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 via-pink-500 to-indigo-600 rounded-3xl blur-md opacity-25 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-orange-500 via-indigo-500 to-blue-600 rounded-3xl blur-md opacity-25"></div>
 
-                        <div class="relative bg-[#fafaff] border border-slate-100 p-8 rounded-3xl text-center shadow-lg transition-transform duration-500 group-hover:-translate-y-1">
-                            <a href="https://www.facebook.com/profile.php?id=61584304726156" target="_blank" class="block relative inline-block group/img mb-4">
-                                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-full blur group-hover/img:opacity-100 opacity-50 transition-opacity duration-500"></div>
-                                <img src="data/kym.jfif" alt="Kym Xavier Alamis" class="w-32 h-32 object-cover rounded-full mx-auto border-4 border-white shadow-xl relative z-10 transition-transform duration-500 group-hover/img:scale-[1.02]">
+                        <div class="relative bg-white border border-slate-100 p-8 rounded-3xl text-center shadow-lg">
+                            <a href="https://www.facebook.com/profile.php?id=61584304726156" target="_blank" class="block relative inline-block mb-4">
+                                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-600 rounded-full blur opacity-50"></div>
+                                <img src="data/kym.jfif" alt="Kym Xavier Alamis" class="w-32 h-32 object-cover rounded-full mx-auto border-4 border-white shadow-xl relative z-10">
                                 <div class="absolute bottom-1 right-2 bg-gradient-to-tr from-indigo-600 to-blue-500 text-white rounded-xl w-8 h-8 flex items-center justify-center border-2 border-white shadow-md text-xs z-20">
                                     <i class="fa-brands fa-facebook-f"></i>
                                 </div>
@@ -232,11 +211,11 @@
                             <p class="text-sm font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mt-1 uppercase tracking-wider">Reliable Student Support</p>
 
                             <div class="mt-6 pt-6 border-t border-slate-200/60 grid grid-cols-2 gap-4 text-left">
-                                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm">
+                                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-xs">
                                     <span class="block text-[10px] font-black text-orange-500 uppercase tracking-widest">Pricing</span>
                                     <span class="block text-sm font-extrabold text-slate-800 mt-1">Student Rates</span>
                                 </div>
-                                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm">
+                                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-xs">
                                     <span class="block text-[10px] font-black text-emerald-500 uppercase tracking-widest">Response</span>
                                     <span class="block text-sm font-extrabold text-slate-800 mt-1">Ultra Fast</span>
                                 </div>
@@ -249,7 +228,6 @@
                     </div>
                 </div>
 
-                <!-- Text Presentation Area -->
                 <div class="lg:col-span-7 space-y-6">
                     <div class="space-y-2">
                         <span class="text-xs font-black text-indigo-600 uppercase tracking-widest block">Your Tech-Savvy Peer</span>
@@ -271,16 +249,16 @@
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2 text-sm font-bold text-slate-800">
-                        <div class="flex items-center gap-2.5 hover:translate-x-1 transition-transform">
+                        <div class="flex items-center gap-2.5">
                             <i class="fa-solid fa-graduation-cap text-orange-500 text-base"></i> Trusted by Local Students
                         </div>
-                        <div class="flex items-center gap-2.5 hover:translate-x-1 transition-transform">
+                        <div class="flex items-center gap-2.5">
                             <i class="fa-solid fa-shield-virus text-emerald-500 text-base"></i> 100% Virus-Free Guarantee
                         </div>
-                        <div class="flex items-center gap-2.5 hover:translate-x-1 transition-transform">
+                        <div class="flex items-center gap-2.5">
                             <i class="fa-solid fa-bolt text-amber-500 text-base"></i> Setup Done in Minutes
                         </div>
-                        <div class="flex items-center gap-2.5 hover:translate-x-1 transition-transform">
+                        <div class="flex items-center gap-2.5">
                             <i class="fa-solid fa-comments text-blue-500 text-base"></i> Always Reachable via Facebook
                         </div>
                     </div>
@@ -289,167 +267,77 @@
         </div>
     </section>
 
-    <!-- New: "How It Works" 3-Step Timeline -->
-    <section id="process" class="py-20 bg-white border-t border-indigo-50/50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-xs font-black text-indigo-600 uppercase tracking-widest block">Zero Stress Setup</span>
-                <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">How It Works</h2>
-                <p class="text-slate-600 font-semibold">Simple, straightforward peer support. No complicated steps, no upfront risks.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 relative">
-                <!-- Step 1 -->
-                <div class="bg-[#fafaff] p-8 rounded-3xl border border-indigo-50/60 relative group hover:border-indigo-200 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-black text-lg shadow-md mb-6">1</div>
-                    <h3 class="text-xl font-black text-slate-900 mb-2">Reach Out</h3>
-                    <p class="text-sm text-slate-600 font-medium leading-relaxed">Message the XAVIERIUM page or text me directly. Just let me know what laptop model you use so we can prep the right configuration.</p>
-                </div>
-                <!-- Step 2 -->
-                <div class="bg-[#fafaff] p-8 rounded-3xl border border-indigo-50/60 relative group hover:border-indigo-200 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-2xl bg-purple-600 text-white flex items-center justify-center font-black text-lg shadow-md mb-6">2</div>
-                    <h3 class="text-xl font-black text-slate-900 mb-2">Quick Diagnostics</h3>
-                    <p class="text-sm text-slate-600 font-medium leading-relaxed">We will check your system compatibility together and map out the safest setup route—whether remotely or through a quick on-campus meet-up.</p>
-                </div>
-                <!-- Step 3 -->
-                <div class="bg-[#fafaff] p-8 rounded-3xl border border-indigo-50/60 relative group hover:border-indigo-200 transition-all duration-300">
-                    <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-black text-lg shadow-md mb-6">3</div>
-                    <h3 class="text-xl font-black text-slate-900 mb-2">Lifetime Activation</h3>
-                    <p class="text-sm text-slate-600 font-medium leading-relaxed">Your suite is fully configured, optimized, and stress-tested in 15–30 minutes. **You only pay after you verify that everything is working flawlessly.**</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Expanded Services Section -->
-    <section id="services" class="py-24 bg-[#fafaff] relative overflow-hidden">
+    <section id="services" class="py-24 bg-white relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
                 <span class="text-xs font-black text-orange-500 uppercase tracking-widest block">Complete Productivity Suite</span>
                 <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">Applications Included Upon Installation</h2>
-                <p class="text-slate-600 font-semibold">Say goodbye to unlicensed warnings. Get full features, permanent activation, and hassle-free deployment for every tool.</p>
+                <p class="text-slate-600 font-semibold">Say goodbye to unlicensed warnings. Get full features, permanent activation, and hassle-free deployment.</p>
             </div>
 
-            <!-- 4x2 Grid mapping all essential Microsoft apps with individual brand badges -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- Word Card -->
-                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-blue-500/5 hover:border-blue-100 transition-all duration-300 group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-blue-50 text-[#106ebe] rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform shadow-inner">
+                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-blue-50 text-[#106ebe] rounded-xl flex items-center justify-center text-xl font-bold mb-4">
                         <i class="fa-regular fa-file-word"></i>
                     </div>
                     <div class="flex items-center justify-between gap-2 mb-1">
                         <h3 class="font-extrabold text-base text-slate-900">Microsoft Word</h3>
-                        <span class="text-[9px] bg-blue-100 text-[#106ebe] font-extrabold px-1.5 py-0.5 rounded-sm uppercase tracking-wide">Activated</span>
+                        <span class="text-[9px] bg-blue-100 text-[#106ebe] font-extrabold px-1.5 py-0.5 rounded-xs uppercase tracking-wide">Activated</span>
                     </div>
-                    <p class="text-xs text-slate-500 font-medium leading-relaxed">Full typing & document design unlocked permanently. No more "View Only" or "Can't Edit" blocks.</p>
+                    <p class="text-xs text-slate-500 font-medium leading-relaxed">Full typing unlocked permanently. No more "View Only" blocks.</p>
                 </div>
 
-                <!-- Excel Card -->
-                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-100 transition-all duration-300 group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-emerald-50 text-[#107c41] rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform shadow-inner">
+                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-emerald-50 text-[#107c41] rounded-xl flex items-center justify-center text-xl font-bold mb-4">
                         <i class="fa-regular fa-file-excel"></i>
                     </div>
                     <div class="flex items-center justify-between gap-2 mb-1">
                         <h3 class="font-extrabold text-base text-slate-900">Microsoft Excel</h3>
-                        <span class="text-[9px] bg-emerald-100 text-[#107c41] font-extrabold px-1.5 py-0.5 rounded-sm uppercase tracking-wide">Activated</span>
+                        <span class="text-[9px] bg-emerald-100 text-[#107c41] font-extrabold px-1.5 py-0.5 rounded-xs uppercase tracking-wide">Activated</span>
                     </div>
-                    <p class="text-xs text-slate-500 font-medium leading-relaxed">Powerful data sheets, unlocked statistical formulas, graphing, macro operations, and research computation.</p>
+                    <p class="text-xs text-slate-500 font-medium leading-relaxed">Powerful spreadsheets formulas and dataset analytics unlocked.</p>
                 </div>
 
-                <!-- PowerPoint Card -->
-                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-orange-500/5 hover:border-orange-100 transition-all duration-300 group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-orange-50 text-[#c43e1c] rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform shadow-inner">
+                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-orange-50 text-[#c43e1c] rounded-xl flex items-center justify-center text-xl font-bold mb-4">
                         <i class="fa-regular fa-file-powerpoint"></i>
                     </div>
                     <div class="flex items-center justify-between gap-2 mb-1">
                         <h3 class="font-extrabold text-base text-slate-900">Microsoft PowerPoint</h3>
-                        <span class="text-[9px] bg-orange-100 text-[#c43e1c] font-extrabold px-1.5 py-0.5 rounded-sm uppercase tracking-wide">Activated</span>
+                        <span class="text-[9px] bg-orange-100 text-[#c43e1c] font-extrabold px-1.5 py-0.5 rounded-xs uppercase tracking-wide">Activated</span>
                     </div>
-                    <p class="text-xs text-slate-500 font-medium leading-relaxed">High-fidelity animations, fully functional smart presenter layouts, and sleek slide templates for thesis defenses.</p>
+                    <p class="text-xs text-slate-500 font-medium leading-relaxed">High-fidelity animations and premium layouts ready for thesis defenses.</p>
                 </div>
 
-                <!-- Outlook Card -->
-                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-sky-500/5 hover:border-sky-100 transition-all duration-300 group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-sky-50 text-[#0078d4] rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform shadow-inner">
+                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 group hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-sky-50 text-[#0078d4] rounded-xl flex items-center justify-center text-xl font-bold mb-4">
                         <i class="fa-regular fa-envelope"></i>
                     </div>
                     <div class="flex items-center justify-between gap-2 mb-1">
                         <h3 class="font-extrabold text-base text-slate-900">Microsoft Outlook</h3>
-                        <span class="text-[9px] bg-sky-100 text-[#0078d4] font-extrabold px-1.5 py-0.5 rounded-sm uppercase tracking-wide">Activated</span>
+                        <span class="text-[9px] bg-sky-100 text-[#0078d4] font-extrabold px-1.5 py-0.5 rounded-xs uppercase tracking-wide">Activated</span>
                     </div>
-                    <p class="text-xs text-slate-500 font-medium leading-relaxed">Professional email sync, academic calendars, agenda planning, and smart priority organization.</p>
+                    <p class="text-xs text-slate-500 font-medium leading-relaxed">Professional email synchronization and calendar configurations setup.</p>
                 </div>
-
-                <!-- Teams Card -->
-                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-indigo-500/5 hover:border-indigo-200 transition-all duration-300 group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-indigo-50 text-[#465efb] rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform shadow-inner">
-                        <i class="fa-solid fa-users-gear"></i>
-                    </div>
-                    <div class="flex items-center justify-between gap-2 mb-1">
-                        <h3 class="font-extrabold text-base text-slate-900">Microsoft Teams</h3>
-                        <span class="text-[9px] bg-indigo-100 text-[#465efb] font-extrabold px-1.5 py-0.5 rounded-sm uppercase tracking-wide">Activated</span>
-                    </div>
-                    <p class="text-xs text-slate-500 font-medium leading-relaxed">Unified virtual meetings, team coordination rooms, live presentation, and secure document sharing.</p>
-                </div>
-
-                <!-- OneNote Card -->
-                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-purple-500/5 hover:border-purple-100 transition-all duration-300 group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-purple-50 text-[#7719aa] rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform shadow-inner">
-                        <i class="fa-solid fa-note-sticky"></i>
-                    </div>
-                    <div class="flex items-center justify-between gap-2 mb-1">
-                        <h3 class="font-extrabold text-base text-slate-900">Microsoft OneNote</h3>
-                        <span class="text-[9px] bg-purple-100 text-[#7719aa] font-extrabold px-1.5 py-0.5 rounded-sm uppercase tracking-wide">Activated</span>
-                    </div>
-                    <p class="text-xs text-slate-500 font-medium leading-relaxed">Digital note binding, research categorization, quick clipping, and device-synced canvas spaces.</p>
-                </div>
-
-                <!-- Access Card -->
-                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-red-500/5 hover:border-red-100 transition-all duration-300 group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-red-50 text-[#a4373a] rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform shadow-inner">
-                        <i class="fa-solid fa-database"></i>
-                    </div>
-                    <div class="flex items-center justify-between gap-2 mb-1">
-                        <h3 class="font-extrabold text-base text-slate-900">Microsoft Access</h3>
-                        <span class="text-[9px] bg-red-100 text-[#a4373a] font-extrabold px-1.5 py-0.5 rounded-sm uppercase tracking-wide">Activated</span>
-                    </div>
-                    <p class="text-xs text-slate-500 font-medium leading-relaxed">Desktop structural database management, custom data forms development, and tracking queries.</p>
-                </div>
-
-                <!-- Publisher Card -->
-                <div class="bg-white p-6 rounded-2xl border border-indigo-50/60 shadow-xs hover:shadow-xl hover:shadow-teal-500/5 hover:border-teal-100 transition-all duration-300 group hover:-translate-y-1">
-                    <div class="w-12 h-12 bg-teal-50 text-[#077568] rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform shadow-inner">
-                        <i class="fa-solid fa-newspaper"></i>
-                    </div>
-                    <div class="flex items-center justify-between gap-2 mb-1">
-                        <h3 class="font-extrabold text-base text-slate-900">Microsoft Publisher</h3>
-                        <span class="text-[9px] bg-teal-100 text-[#077568] font-extrabold px-1.5 py-0.5 rounded-sm uppercase tracking-wide">Activated</span>
-                    </div>
-                    <p class="text-xs text-slate-500 font-medium leading-relaxed">Page layouts design tool optimized for school newsletters, promotional brochures, and event posters.</p>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- New: Interactive Pricing / Package Tiers -->
-    <section id="packages" class="py-24 bg-white border-t border-indigo-50/50">
+    <section id="packages" class="py-24 bg-[#fafaff] border-t border-indigo-50/50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
                 <span class="text-xs font-black text-amber-600 uppercase tracking-widest block">Transparent Options</span>
                 <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">Student-Friendly Package Rates</h2>
-                <p class="text-slate-600 font-semibold">Choose the depth of support your machine needs. High value, transparent expectations.</p>
+                <p class="text-slate-600 font-semibold">High value, transparent setup assistance optimized directly for devices.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 items-start">
-                <!-- Basic Tier -->
-                <div class="bg-[#fafaff] rounded-3xl p-8 border border-slate-100 shadow-sm relative flex flex-col justify-between h-full hover:border-indigo-100 transition-all duration-300">
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-xs relative flex flex-col justify-between h-full hover:border-indigo-100 transition-all duration-300">
                     <div>
                         <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest block mb-1">Standard Help</span>
                         <h3 class="text-xl font-black text-slate-900">Basic Suite Essentials</h3>
                         <p class="text-xs text-slate-500 font-medium mt-1">Perfect for a fast setup fix before deadlines.</p>
-                        <hr class="my-6 border-slate-200/60">
+                        <hr class="my-6 border-slate-100">
                         <ul class="space-y-4">
                             <li class="flex items-center gap-3 text-sm font-bold text-slate-700">
                                 <i class="fa-solid fa-circle-check text-emerald-500"></i> Core App Activation (Word, Excel, PPT)
@@ -458,7 +346,7 @@
                                 <i class="fa-solid fa-circle-check text-emerald-500"></i> Permanent Lifetime Support
                             </li>
                             <li class="flex items-center gap-3 text-sm font-bold text-slate-700">
-                                <i class="fa-solid fa-circle-check text-emerald-500"></i> Completely Virus-Free Configurations
+                                <i class="fa-solid fa-circle-check text-emerald-500"></i> Completely Virus-Free Setup
                             </li>
                         </ul>
                     </div>
@@ -467,9 +355,8 @@
                     </div>
                 </div>
 
-                <!-- Premium Tier -->
-                <div class="bg-white rounded-3xl p-8 border-2 border-indigo-600 shadow-xl relative flex flex-col justify-between h-full relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-xl">POPULAR CHICE</div>
+                <div class="bg-white rounded-3xl p-8 border-2 border-indigo-600 shadow-xl relative flex flex-col justify-between h-full overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-xl">POPULAR CHOICE</div>
                     <div>
                         <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest block mb-1">Full Tune-Up</span>
                         <h3 class="text-xl font-black text-slate-900">Premium Optimization Suite</h3>
@@ -480,10 +367,10 @@
                                 <i class="fa-solid fa-circle-check text-indigo-600"></i> MS 365 Cloud Suite Configuration
                             </li>
                             <li class="flex items-center gap-3 text-sm font-bold text-slate-700">
-                                <i class="fa-solid fa-circle-check text-indigo-600"></i> Full App Access Unlocked (All 8 Apps)
+                                <i class="fa-solid fa-circle-check text-indigo-600"></i> Full App Access Unlocked (All Apps)
                             </li>
                             <li class="flex items-center gap-3 text-sm font-bold text-slate-700">
-                                <i class="fa-solid fa-circle-check text-indigo-600"></i> Performance Clean (Temporary File Removal)
+                                <i class="fa-solid fa-circle-check text-indigo-600"></i> Performance Clean (Temp File Removal)
                             </li>
                             <li class="flex items-center gap-3 text-sm font-bold text-slate-700">
                                 <i class="fa-solid fa-circle-check text-indigo-600"></i> Laptop Speed Optimization Audit
@@ -498,17 +385,15 @@
         </div>
     </section>
 
-    <!-- New: Interactive FAQ Accordions using HTML5 <details> -->
-    <section id="faq" class="py-24 bg-[#fafaff] border-t border-indigo-50/50">
+    <section id="faq" class="py-24 bg-white border-t border-indigo-50/50">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 space-y-3">
                 <span class="text-xs font-black text-indigo-600 uppercase tracking-widest block">Got Questions?</span>
                 <h2 class="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">Frequently Asked Questions</h2>
             </div>
-            
+
             <div class="space-y-4">
-                <!-- FAQ 1 -->
-                <details class="group bg-white border border-indigo-50/60 rounded-2xl shadow-xs transition-all duration-300 overflow-hidden" open>
+                <details class="group bg-white border border-indigo-50/60 rounded-2xl shadow-xs overflow-hidden" open>
                     <summary class="flex items-center justify-between p-6 cursor-pointer font-black text-base text-slate-900 select-none outline-none">
                         <span>Is the activation really permanent?</span>
                         <span class="w-7 h-7 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center transition-transform duration-300 group-open:rotate-180">
@@ -520,8 +405,7 @@
                     </div>
                 </details>
 
-                <!-- FAQ 2 -->
-                <details class="group bg-white border border-indigo-50/60 rounded-2xl shadow-xs transition-all duration-300 overflow-hidden">
+                <details class="group bg-white border border-indigo-50/60 rounded-2xl shadow-xs overflow-hidden">
                     <summary class="flex items-center justify-between p-6 cursor-pointer font-black text-base text-slate-900 select-none outline-none">
                         <span>Is it safe for my laptop?</span>
                         <span class="w-7 h-7 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center transition-transform duration-300 group-open:rotate-180">
@@ -532,36 +416,21 @@
                         100% safe. I strictly avoid shady activators that carry viruses or malware. Your files, privacy, and device health are my absolute top priorities.
                     </div>
                 </details>
-
-                <!-- FAQ 3 -->
-                <details class="group bg-white border border-indigo-50/60 rounded-2xl shadow-xs transition-all duration-300 overflow-hidden">
-                    <summary class="flex items-center justify-between p-6 cursor-pointer font-black text-base text-slate-900 select-none outline-none">
-                        <span>How long does the setup take?</span>
-                        <span class="w-7 h-7 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center transition-transform duration-300 group-open:rotate-180">
-                            <i class="fa-solid fa-chevron-down text-xs"></i>
-                        </span>
-                    </summary>
-                    <div class="px-6 pb-6 text-sm font-medium text-slate-600 leading-relaxed border-t border-slate-50 pt-4">
-                        The entire process usually takes about 15 to 30 minutes, depending on your laptop's performance and internet connection speed.
-                    </div>
-                </details>
             </div>
         </div>
     </section>
 
-    <!-- Unified Contact Hub Section Container -->
-    <section id="contact" class="py-24 bg-white border-t border-indigo-50/60 relative overflow-hidden">
+    <section id="contact" class="py-24 bg-[#fafaff] border-t border-indigo-50/60 relative overflow-hidden">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid md:grid-cols-12 gap-8 items-stretch">
-                
-                <!-- Automated Form Block -->
-                <div class="md:col-span-7 bg-[#fafaff] rounded-3xl p-8 shadow-xl shadow-indigo-500/5 border border-indigo-50/50 flex flex-col justify-between">
+
+                <div class="md:col-span-7 bg-white rounded-3xl p-8 shadow-xl shadow-indigo-500/5 border border-indigo-50/50 flex flex-col justify-between">
                     <div>
                         <div class="mb-6 space-y-1">
                             <h2 class="text-2xl font-black text-slate-900 tracking-tight">Have a Question or Suggestion?</h2>
-                            <p class="text-slate-500 text-xs font-medium">Fill out the fields below to instantly send a message straight to my system.</p>
+                            <p class="text-slate-500 text-xs font-medium">Fill out the fields below to send an automated request cleanly straight to my inbox.</p>
                         </div>
-                        
+
                         <form id="ajaxForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
                             <input type="hidden" name="access_key" value="b5a8f988-9d65-4e77-8e05-4648cf281ff0">
                             <input type="hidden" name="subject" value="New Setup Request from XAVIERIUM Site">
@@ -570,60 +439,46 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="space-y-1">
                                     <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Your Name</label>
-                                    <input type="text" name="name" required placeholder="Juan Dela Cruz" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-white focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300 shadow-inner">
+                                    <input type="text" name="name" required placeholder="Juan Dela Cruz" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300">
                                 </div>
                                 <div class="space-y-1">
                                     <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Email Address</label>
-                                    <input type="email" name="email" required placeholder="juan@example.com" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-white focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300 shadow-inner">
+                                    <input type="email" name="email" required placeholder="juan@example.com" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300">
                                 </div>
                             </div>
                             <div class="space-y-1">
                                 <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Your Message / Question</label>
-                                <textarea rows="4" name="message" required placeholder="How can I help you today?" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-white focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300 shadow-inner"></textarea>
+                                <textarea rows="4" name="message" required placeholder="How can I help you today?" class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300"></textarea>
                             </div>
-                            <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-purple-600 hover:to-indigo-600 text-white font-bold py-3.5 rounded-2xl transition-all duration-300 shadow-md shadow-indigo-500/10 text-sm flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]">
+                            <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3.5 rounded-2xl transition-all duration-300 shadow-md text-sm flex items-center justify-center gap-2 hover:scale-[1.02]">
                                 Send Message <i class="fa-solid fa-paper-plane text-xs"></i>
                             </button>
                         </form>
                     </div>
                 </div>
 
-                <!-- Connect With Us Panel -->
                 <div class="md:col-span-5 bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 text-white rounded-3xl p-8 shadow-xl flex flex-col justify-between border border-indigo-900/30 relative overflow-hidden group">
                     <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.15),transparent_50%)]"></div>
                     <div class="space-y-6 relative z-10">
                         <div class="space-y-1">
                             <span class="text-[10px] text-indigo-400 font-black uppercase tracking-widest block">Direct Reach</span>
                             <h3 class="text-2xl font-black tracking-tight">Connect With Me</h3>
-                            <p class="text-slate-400 text-xs font-medium">Skip the forms entirely—reach out directly across any of my primary channels below.</p>
+                            <p class="text-slate-400 text-xs font-medium">Skip forms entirely—reach out directly across my primary communications gateway below.</p>
                         </div>
-                        
+
                         <div class="space-y-3">
-                            <!-- Personal FB -->
-                            <a href="https://www.facebook.com/profile.php?id=61584304726156" target="_blank" class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 group/item">
-                                <div class="w-9 h-9 bg-blue-600/20 text-blue-400 rounded-xl flex items-center justify-center text-sm group-hover/item:bg-blue-600 group-hover/item:text-white transition-all duration-300 shadow-sm">
+                            <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 group/item">
+                                <div class="w-9 h-9 bg-blue-600/20 text-blue-400 rounded-xl flex items-center justify-center text-sm group-hover/item:bg-blue-600 group-hover/item:text-white transition-all duration-300">
                                     <i class="fa-brands fa-facebook-f"></i>
                                 </div>
                                 <div>
-                                    <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-none">Personal Profile</span>
-                                    <span class="text-sm font-bold text-slate-200 mt-1 block group-hover/item:text-white transition-colors">Kym Alamis</span>
-                                chain
-                            </a>
-
-                            <!-- Business Page -->
-                            <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 group/item">
-                                <div class="w-9 h-9 bg-sky-500/20 text-sky-400 rounded-xl flex items-center justify-center text-sm group-hover/item:bg-sky-500 group-hover/item:text-white transition-all duration-300 shadow-sm">
-                                    <i class="fa-brands fa-facebook-messenger"></i>
-                                </div>
-                                <div>
-                                    <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-none">Official Help Page</span>
-                                    <span class="text-sm font-bold text-slate-200 mt-1 block group-hover/item:text-white transition-colors">XAVIERIUM Portal</span>
+                                    <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-none">Official Facebook Portal</span>
+                                    <span class="text-sm font-bold text-slate-200 mt-1 block group-hover/item:text-white transition-colors">Message XAVIERIUM / Kym</span>
                                 </div>
                             </a>
 
-                            <!-- Email Link -->
                             <a href="mailto:alamiskym@gmail.com" class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 group/item">
-                                <div class="w-9 h-9 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center text-sm group-hover/item:bg-emerald-500 group-hover/item:text-white transition-all duration-300 shadow-sm">
+                                <div class="w-9 h-9 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center text-sm group-hover/item:bg-emerald-500 group-hover/item:text-white transition-all duration-300">
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
                                 <div>
@@ -632,9 +487,8 @@
                                 </div>
                             </a>
 
-                            <!-- Mobile hotline -->
                             <a href="tel:09120694134" class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 group/item">
-                                <div class="w-9 h-9 bg-orange-500/20 text-orange-400 rounded-xl flex items-center justify-center text-sm group-hover/item:bg-orange-500 group-hover/item:text-white transition-all duration-300 shadow-sm">
+                                <div class="w-9 h-9 bg-orange-500/20 text-orange-400 rounded-xl flex items-center justify-center text-sm group-hover/item:bg-orange-500 group-hover/item:text-white transition-all duration-300">
                                     <i class="fa-solid fa-phone"></i>
                                 </div>
                                 <div>
@@ -644,7 +498,7 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="text-[10px] text-slate-500 font-bold pt-4 mt-4 border-t border-slate-800/60 text-center relative z-10 uppercase tracking-wide">
                        Available for setup support daily.
                     </div>
@@ -654,57 +508,46 @@
         </div>
     </section>
 
-    <!-- Support/Donation Banner -->
     <section id="donate" class="py-20 bg-slate-950 text-center relative overflow-hidden border-b border-slate-900">
         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-emerald-500/5 opacity-80"></div>
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid md:grid-cols-12 gap-10 items-center">
-            
-            <!-- Left Info Area -->
             <div class="md:col-span-7 text-center md:text-left space-y-5">
                 <div class="w-14 h-14 bg-gradient-to-tr from-indigo-600 to-purple-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/20 mx-auto md:mx-0">
                     <i class="fa-solid fa-graduation-cap"></i>
                 </div>
                 <h2 class="text-3xl font-black text-white tracking-tight sm:text-4xl">Support My Student Journey</h2>
                 <p class="text-slate-300 font-medium text-base leading-relaxed">
-                    I run XAVIERIUM to provide affordable tech solutions to our community while independently funding my studies. If my service helped you, or if you'd just like to support a student's project, any contribution is deeply appreciated!
+                    I run XAVIERIUM to provide affordable tech solutions to our community while independently funding my studies. If my service helped you, any contribution is deeply appreciated!
                 </p>
 
-                <!-- GCash Display Block -->
                 <div class="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/5 backdrop-blur-md p-2.5 pl-6 rounded-2xl border border-white/10 shadow-xl w-full sm:w-auto">
                     <div class="flex items-center gap-3">
                         <span class="bg-[#007DFE] text-white text-[10px] font-black px-2 py-1 rounded-md tracking-wider uppercase">GCash</span>
                         <span class="text-xl font-black text-white tracking-wider">0912 069 4134</span>
                     </div>
-                    <button onclick="navigator.clipboard.writeText('09120694134'); alert('GCash number copied to clipboard! Thank you so much!');" class="bg-white hover:bg-slate-100 text-slate-950 font-extrabold px-6 py-3 rounded-xl text-sm transition-all duration-300 w-full sm:w-auto shadow-md hover:scale-[1.02] active:scale-[0.98]">
+                    <button onclick="navigator.clipboard.writeText('09120694134'); alert('GCash number copied to clipboard! Thank you so much!');" class="bg-white hover:bg-slate-100 text-slate-950 font-extrabold px-6 py-3 rounded-xl text-sm transition-all duration-300 w-full sm:w-auto shadow-md">
                         <i class="fa-regular fa-copy mr-1"></i> Copy Number
                     </button>
                 </div>
-                <p class="text-slate-500 text-xs font-semibold">Every little bit goes a long way. Thank you! ❤️</p>
             </div>
 
-            <!-- Right QR Code Image -->
             <div class="md:col-span-5 flex flex-col items-center justify-center">
-                <div class="bg-white p-4 rounded-3xl shadow-2xl border border-white/10 max-w-[240px] w-full transition-transform duration-500 hover:scale-[1.03] relative group">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-500 opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500"></div>
-                    <img src="data/Xavierium-GCash-QR.jfif" alt="Xavierium GCash QR Code" class="w-full h-auto rounded-2xl object-cover shadow-sm bg-slate-50">
+                <div class="bg-white p-4 rounded-3xl shadow-2xl border border-white/10 max-w-[220px] w-full relative">
+                    <img src="data/Xavierium-GCash-QR.jfif" alt="Xavierium GCash QR Code" class="w-full h-auto rounded-2xl object-cover bg-slate-50">
                 </div>
                 <div class="mt-4 flex flex-col items-center gap-1">
-                    <a href="data/Xavierium-GCash-QR.jfif" download="Xavierium-GCash-QR.jfif" class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-purple-600 hover:to-indigo-600 text-white font-extrabold px-5 py-2 rounded-xl text-xs transition-all duration-300 shadow-md shadow-indigo-500/20 hover:scale-[1.04] active:scale-[0.98]">
+                    <a href="data/Xavierium-GCash-QR.jfif" download="Xavierium-GCash-QR.jfif" class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-extrabold px-5 py-2 rounded-xl text-xs transition-all duration-300 shadow-md">
                         <i class="fa-solid fa-download"></i> Download QR Code
                     </a>
-                    <span class="text-[10px] text-slate-500 font-bold tracking-wider uppercase mt-1"><i class="fa-solid fa-qrcode mr-1"></i> Scan or Save to Pay</span>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Footer Segment Component -->
     <footer class="bg-slate-950 text-slate-500 pt-16 pb-8 border-t border-slate-900/50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div class="grid md:grid-cols-3 gap-8 pb-12 border-b border-slate-900">
-
-                <a href="tel:09120694134" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-300 group">
+                <a href="tel:09120694134" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent transition-all duration-300 group">
                     <div class="w-11 h-11 bg-slate-900 text-orange-500 rounded-xl flex items-center justify-center text-base group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-inner">
                         <i class="fa-solid fa-phone"></i>
                     </div>
@@ -714,7 +557,7 @@
                     </div>
                 </a>
 
-                <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-300 group">
+                <a href="https://www.facebook.com/profile.php?id=61590647882306" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 border border-transparent transition-all duration-300 group">
                     <div class="w-11 h-11 bg-slate-900 text-indigo-400 rounded-xl flex items-center justify-center text-base group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-inner">
                         <i class="fa-brands fa-facebook-f"></i>
                     </div>
@@ -733,7 +576,6 @@
                         <p class="text-sm mt-0.5 font-medium text-slate-400">Mercado st. Poblacion, Kabacan</p>
                     </div>
                 </div>
-
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-semibold tracking-wide">
@@ -745,7 +587,6 @@
         </div>
     </footer>
 
-    <!-- Form Response Engine Script Node -->
     <script>
         const form = document.getElementById('ajaxForm');
         form.addEventListener('submit', function(e) {
@@ -753,7 +594,7 @@
             const formData = new FormData(form);
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
-            
+
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
             btn.innerHTML = 'Sending Message... <i class="fa-solid fa-spinner animate-spin ml-2"></i>';
@@ -761,24 +602,18 @@
 
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: json
             })
             .then(async (response) => {
-                let res = await response.json();
                 if (response.status == 200) {
                     alert("Message sent cleanly and completely directly to Kym's inbox! Thank you.");
                     form.reset();
                 } else {
-                    alert(res.message || "Something went wrong. Please check your implementation settings.");
+                    alert("Something went wrong. Please check your form implementation settings.");
                 }
             })
-            .catch(error => {
-                alert("Network transaction failed. Please use alternative verification routes on the right.");
-            })
+            .catch(error => { alert("Network transaction failed. Please use alternative verification routes on the right."); })
             .then(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
