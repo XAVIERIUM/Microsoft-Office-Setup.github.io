@@ -79,15 +79,36 @@
                             <div class="flex flex-col gap-1.5">
                                 <div class="flex items-center gap-2">
                                     <span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-[10px] font-black bg-purple-50 text-purple-600 uppercase tracking-widest border border-purple-100/50">Step 3</span>
-                                    <span class="text-[11px] font-bold text-purple-400 uppercase tracking-wider">Verification Asset</span>
+                                    <span class="text-[11px] font-bold text-purple-400 uppercase tracking-wider">Download QR Link</span>
                                 </div>
                                 <h4 class="text-sm font-black text-slate-800 tracking-wide mt-0.5">Save & Distribute Our Official Support QR Image</h4>
-                                <p class="text-xs text-slate-500 leading-relaxed font-medium">You <span class="text-rose-500 font-extrabold bg-rose-50 px-1 py-0.5 rounded mx-0.5">MUST</span> provide a Screenshot Proof of your public share inside the main application form block below to qualify for the premium 50% OFF campaign deployment!</p>
+                                <p class="text-xs text-slate-500 leading-relaxed font-medium">Click directly on the image box block below to instantly download your verification routing token image file asset.</p>
                             </div>
 
-                            <a href="data/qr.jfif" download="Official-Support-QR.jfif" class="w-full py-3.5 px-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-600 hover:shadow-lg hover:shadow-indigo-500/15 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-sm transition-all duration-300 flex items-center justify-center gap-2 text-center no-underline">
-                                <i class="fa-solid fa-arrow-down-to-line text-xs"></i> ⬇️ Click to Download QR Code
+                            <a href="data/qr.jfif" download="Official-Support-QR.jfif" class="block group relative rounded-xl overflow-hidden border-2 border-dashed border-purple-200 hover:border-purple-400 transition-all duration-300 bg-white/50 p-2 text-center max-w-[180px] mx-auto shadow-sm">
+                                <img src="data/qr.jfif" alt="Official Support QR" class="w-full h-auto rounded-lg mx-auto object-contain transition-transform duration-300 group-hover:scale-102">
+                                <div class="absolute inset-0 bg-purple-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white gap-1">
+                                    <i class="fa-solid fa-cloud-arrow-down text-sm animate-bounce"></i>
+                                    <span class="text-[9px] uppercase tracking-widest font-black">Download Asset</span>
+                                </div>
                             </a>
+                        </div>
+
+                        <div class="bg-amber-50/30 rounded-2xl p-4 border border-amber-100 space-y-2 transition-all duration-300">
+                            <div class="flex flex-col gap-1.5">
+                                <div class="flex items-center gap-2">
+                                    <span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-50 text-amber-700 uppercase tracking-widest border border-amber-100">Step 4</span>
+                                    <span class="text-[11px] font-bold text-amber-500 uppercase tracking-wider">Proof Upload</span>
+                                </div>
+                                <h4 class="text-sm font-black text-slate-800 tracking-wide mt-0.5">Upload Screenshot Verification</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed font-medium">You <span class="text-rose-500 font-extrabold bg-rose-50 px-1 py-0.5 rounded mx-0.5">MUST</span> provide a Screenshot Proof of your public share inside the main application form block below to claim your tier pricing structure.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-50/50 rounded-2xl p-4 border border-emerald-100 text-center space-y-1">
+                            <div class="text-emerald-600 text-lg">🎉</div>
+                            <h4 class="text-sm font-black text-emerald-800 tracking-wide">Congratulations!</h4>
+                            <p class="text-xs text-emerald-600 font-medium leading-relaxed">Your custom promotional tracking identifier string is ready. Fill out the application profile entries directly below to lock in activation logs.</p>
                         </div>
 
                     </div>
@@ -120,8 +141,18 @@
         });
     }
 
-    // Handles the actual redirection immediately without middle confirmations
+    // Handles the actual redirection with a polite, aesthetic modal design configuration context
     function proceedToFacebookLink() {
+        // Aesthetic custom verification dialog interface sequence
+        const userConfirmation = confirm(
+            "🌟 Ready to lock in your discount?\n\n" +
+            "We are about to open our official campaign post in a new tab. " +
+            "Please share it publicly on your timeline, then head back here to finalize your setup!\n\n" +
+            "Press 'OK' to proceed to Facebook safely."
+        );
+
+        if (!userConfirmation) return; // Terminate gracefully if permission is denied
+
         const targetUrl = "https://www.facebook.com/share/p/1D8YBJyL6m/";
         const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(targetUrl)}`;
 
@@ -266,7 +297,7 @@
             hiddenModel.value = model;
         }
     }
-</script>                                 <!DOCTYPE html>
+</script>                           <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
