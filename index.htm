@@ -51,29 +51,53 @@
             displayCode.textContent = userGeneratedCode;
         }
 
-        // Reveal the Step 2 Facebook options block inside the modal layout
+        // Reveal the options block inside the modal layout
         const outputBox = document.getElementById('referral-output-box');
         if (outputBox) {
-            // Added max-h-[60vh] and overflow-y-auto to guarantee the modal content scrolls cleanly on small screens
+            // Re-engineered layout wrapper: Whole body scrolls dynamically, cancel action locks perfectly at base
             outputBox.innerHTML = `
-                <div class="mt-6 pt-5 border-t border-slate-100 flex flex-col gap-4 w-full text-left max-h-[60vh] overflow-y-auto pr-1 custom-scrollbar">
-                    <div>
-                        <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest block mb-1">Step 2: Share & Claim</span>
-                        <h4 class="text-sm font-black text-slate-800 uppercase tracking-wide">Post to Facebook to Lock in your 50% Off</h4>
-                        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Click below to open our official campaign post. Share it publicly on your timeline, then scroll down to attach your proof screenshot.</p>
+                <div class="mt-6 pt-5 border-t border-slate-100 flex flex-col w-full text-left antialiased">
+
+                    <div class="max-h-[48vh] overflow-y-auto pr-2 space-y-6 scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent">
+
+                        <div class="bg-slate-50/50 rounded-2xl p-4 border border-slate-100 space-y-3.5 transition-all duration-300 hover:border-slate-200">
+                            <div class="flex flex-col gap-1.5">
+                                <div class="flex items-center gap-2">
+                                    <span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-[10px] font-black bg-indigo-50 text-indigo-600 uppercase tracking-widest border border-indigo-100/50">Step 2</span>
+                                    <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Social Share Link</span>
+                                </div>
+                                <h4 class="text-sm font-black text-slate-800 tracking-wide mt-0.5">Post to Facebook to Lock in your 50% Off</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed font-medium">Click below to open our official campaign post. Share it publicly on your timeline, then scroll down to attach your proof screenshot.</p>
+                            </div>
+
+                            <button type="button" onclick="proceedToFacebookLink()" class="w-full py-3.5 px-4 bg-[#1877f2] hover:bg-[#145dbf] hover:shadow-lg hover:shadow-blue-500/10 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all duration-200 flex items-center justify-center gap-2.5 group">
+                                <i class="fa-brands fa-facebook text-sm transition-transform duration-200 group-hover:scale-110"></i> Click to Post and Share
+                            </button>
+                        </div>
+
+                        <div class="bg-purple-50/20 rounded-2xl p-4 border border-purple-100/40 space-y-4 transition-all duration-300">
+                            <div class="flex flex-col gap-1.5">
+                                <div class="flex items-center gap-2">
+                                    <span class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-[10px] font-black bg-purple-50 text-purple-600 uppercase tracking-widest border border-purple-100/50">Step 3</span>
+                                    <span class="text-[11px] font-bold text-purple-400 uppercase tracking-wider">Verification Asset</span>
+                                </div>
+                                <h4 class="text-sm font-black text-slate-800 tracking-wide mt-0.5">Save & Distribute Our Official Support QR Image</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed font-medium">You <span class="text-rose-500 font-extrabold bg-rose-50 px-1 py-0.5 rounded mx-0.5">MUST</span> provide a Screenshot Proof of your public share inside the main application form block below to qualify for the premium 50% OFF campaign deployment!</p>
+                            </div>
+
+                            <a href="data/qr.jfif" download="Official-Support-QR.jfif" class="w-full py-3.5 px-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-600 hover:shadow-lg hover:shadow-indigo-500/15 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-sm transition-all duration-300 flex items-center justify-center gap-2 text-center no-underline">
+                                <i class="fa-solid fa-arrow-down-to-line text-xs"></i> ⬇️ Click to Download QR Code
+                            </a>
+                        </div>
+
                     </div>
 
-                    <div class="flex flex-col gap-2.5 w-full mt-2">
-                        <!-- Primary Facebook Action -->
-                        <button type="button" onclick="proceedToFacebookLink()" class="w-full py-3.5 px-4 bg-[#1877f2] hover:bg-[#145dbf] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md transition-all duration-200 flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-facebook text-sm"></i> Click to Post and Share
-                        </button>
-
-                        <!-- Clean Cancel / Back Action (Seamless Layout Dismissal) -->
-                        <button type="button" onclick="skipReferralAndReturn()" class="w-full py-3.5 px-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 font-bold text-xs uppercase tracking-wider rounded-xl transition-all duration-200 text-center">
-                            ↩️ Cancel & Go Back
+                    <div class="pt-4 mt-4 border-t border-slate-100 w-full bg-white">
+                        <button type="button" onclick="skipReferralAndReturn()" class="w-full py-3.5 px-4 bg-slate-50 hover:bg-slate-100 border border-slate-200/80 text-slate-600 hover:text-slate-800 font-bold text-xs uppercase tracking-wider rounded-xl transition-all duration-200 text-center flex items-center justify-center gap-1.5">
+                            <span>↩️</span> Cancel & Go Back
                         </button>
                     </div>
+
                 </div>
             `;
             outputBox.classList.remove('hidden');
@@ -234,7 +258,6 @@
         }
     }
 
-    // Helper utility to update underlying database tags
     function updateFormDeviceFields(brand, model) {
         const hiddenMake = document.getElementById('selected_laptop_make');
         const hiddenModel = document.getElementById('selected_laptop_model');
@@ -243,7 +266,7 @@
             hiddenModel.value = model;
         }
     }
-</script>                                     <!DOCTYPE html>
+</script>                                 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
