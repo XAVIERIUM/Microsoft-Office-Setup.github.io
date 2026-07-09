@@ -12,6 +12,7 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         details summary::-webkit-details-marker { display: none; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <!-- =========================================================================
@@ -33,7 +34,7 @@
     function generateReferralLink() {
         const nameInput = document.getElementById('sharer-name-input');
         if (!nameInput || !nameInput.value.trim()) {
-            alert("Please type your full name first to register your custom student voucher code.");
+            alert("Please type your full name first to register your custom voucher code.");
             return;
         }
 
@@ -61,12 +62,6 @@
         if (formMyCode) {
             formMyCode.value = userGeneratedCode;
         }
-
-        // FORCE-INJECT CAMPAIGN PROOF INTO TEXTAREA SO IT ARRIVES IN YOUR GMAIL
-        const messageTextarea = document.getElementById('form-message');
-        if (messageTextarea) {
-            messageTextarea.value = `[ACTION REQUIRED - 50% OFF CLAIM VERIFICATION]\n--------------------------------------------------\nSharer Name: ${nameValue}\nGenerated Tracker Code: ${userGeneratedCode}\n\nStatus: User has generated code. Awaiting screenshot proof that they shared our Facebook Campaign Post (https://www.facebook.com/share/p/1D8YBJyL6m/) AND distributed the official QR code graphic (qr.jfif).\n--------------------------------------------------`;
-        }
     }
 
     // Helper button logic to copy the short identifier string to clipboard
@@ -79,19 +74,55 @@
         });
     }
 
-    // 2. OPENS THE EXACT TARGET FACEBOOK POST IN A POPUP WINDOW FOR THEM TO SHARE
+    // 2. OPENS A BEAUTIFUL CUSTOM REDIRECT MODAL FOR AUTHORIZATION
     function shareToFacebook() {
+        // Find or create our aesthetic redirect prompt box
+        const redirectModal = document.getElementById('redirect-auth-modal');
+        if (redirectModal) {
+            redirectModal.style.display = 'flex';
+        } else {
+            // Fallback just in case the HTML template modal hasn't been added yet
+            proceedToFacebookLink();
+        }
+    }
+
+    // Handles the actual redirection when they click "Click to Post and Share"
+    function proceedToFacebookLink() {
         const targetUrl = "https://www.facebook.com/share/p/1D8YBJyL6m/";
         const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(targetUrl)}`;
 
-        // Open the specific Facebook post window layout properties
         window.open(fbShareUrl, '_blank', 'width=600,height=400,resizable=yes,scrollbars=yes');
 
-        // Close modal box view and focus user smoothly onto form instructions
-        toggleShareModal();
+        closeRedirectModal();
+        toggleShareModal(); // Closes your original code generator modal
+
         const contactBlock = document.getElementById('ajaxForm');
         if (contactBlock) {
             contactBlock.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    // OPT-OUT PATH: Smoothly exits the flow and redirects user focus back to the Campaign Headline
+    function skipReferralAndReturn() {
+        closeRedirectModal();
+
+        // Explicitly hide the main generation container modal if open
+        const mainModal = document.getElementById('share-modal');
+        if (mainModal) {
+            mainModal.classList.add('hidden');
+        }
+
+        // Finds the specific campaign section header and scrolls to it smoothly
+        const lifelineSection = document.getElementById('lifeline-header') || document.getElementById('ajaxForm');
+        if (lifelineSection) {
+            lifelineSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    function closeRedirectModal() {
+        const redirectModal = document.getElementById('redirect-auth-modal');
+        if (redirectModal) {
+            redirectModal.style.display = 'none';
         }
     }
 
@@ -147,6 +178,7 @@
                     if (response.status == 200) {
                         alert("Verification submission received! Check your email inbox shortly for support queue deployment logs.");
                         form.reset();
+                        if (typeof userGeneratedCode !== 'undefined') userGeneratedCode = "";
                     } else {
                         alert("Submission error. Please ensure your Web3Forms token keys match.");
                     }
@@ -163,13 +195,65 @@
             });
         }
     });
+    function toggleOSArchitecture(osType) {
+            const winBtn = document.getElementById('tabWindowsBtn');
+            const macBtn = document.getElementById('tabMacBtn');
+            const basicBtn = document.getElementById('basicPackageButton');
+            const premiumBtn = document.getElementById('premiumPackageButton');
+            const premiumTitle = document.getElementById('premiumCardTitle');
+            const premiumFeat1 = document.getElementById('premiumFeature1');
+            const premiumFeat4 = document.getElementById('premiumFeature4');
+
+            if (!winBtn || !macBtn) return;
+
+            if (osType === 'mac') {
+                winBtn.className = "px-6 py-2.5 rounded-xl text-xs font-black text-slate-500 hover:text-slate-900 transition-all duration-300";
+                winBtn.querySelector('i').className = "fa-brands fa-windows mr-1.5 text-slate-400";
+
+                macBtn.className = "px-6 py-2.5 rounded-xl text-xs font-black bg-white text-slate-900 shadow-sm transition-all duration-300";
+                macBtn.querySelector('i').className = "fa-brands fa-apple mr-1.5 text-indigo-600";
+
+                if (premiumTitle) premiumTitle.textContent = "Mac Professional Suite";
+                if (premiumFeat1) premiumFeat1.innerHTML = '<i class="fa-solid fa-circle-check text-indigo-600"></i> Office for Mac LTSC Framework';
+                if (premiumFeat4) premiumFeat4.innerHTML = '<i class="fa-solid fa-circle-check text-indigo-600"></i> macOS Environment Stability Optimization';
+
+                if (basicBtn) basicBtn.textContent = "Select Mac Basic Suite";
+                if (premiumBtn) premiumBtn.textContent = "Select Mac Premium Suite";
+
+                updateFormDeviceFields("Apple", "macOS Engine Environment");
+            } else {
+                macBtn.className = "px-6 py-2.5 rounded-xl text-xs font-black text-slate-500 hover:text-slate-900 transition-all duration-300";
+                macBtn.querySelector('i').className = "fa-brands fa-apple mr-1.5 text-slate-400";
+
+                winBtn.className = "px-6 py-2.5 rounded-xl text-xs font-black bg-white text-slate-900 shadow-sm transition-all duration-300";
+                winBtn.querySelector('i').className = "fa-brands fa-windows mr-1.5 text-indigo-600";
+
+                if (premiumTitle) premiumTitle.textContent = "Premium Optimization Suite";
+                if (premiumFeat1) premiumFeat1.innerHTML = '<i class="fa-solid fa-circle-check text-indigo-600"></i> MS 365 Cloud Suite Configuration';
+                if (premiumFeat4) premiumFeat4.innerHTML = '<i class="fa-solid fa-circle-check text-indigo-600"></i> Laptop Speed Optimization Audit';
+
+                if (basicBtn) basicBtn.textContent = "Select Windows Basic";
+                if (premiumBtn) premiumBtn.textContent = "Select Windows Premium";
+
+                updateFormDeviceFields("", "");
+            }
+        }
+
+        function updateFormDeviceFields(brand, model) {
+            const hiddenMake = document.getElementById('selected_laptop_make');
+            const hiddenModel = document.getElementById('selected_laptop_model');
+            if (hiddenMake && hiddenModel) {
+                hiddenMake.value = brand;
+                hiddenModel.value = model;
+            }
+        }
 </script>
 <body <!-- START: TOP URGENCY & REFERRAL BANNER -->
 <div class="bg-indigo-900 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium sticky top-0 z-50 shadow-md">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-2">
         <span> <span class="text-yellow-400 font-bold">Best Deal:</span> Share the link for 50% OFF right now. Invite 3 people to get your setup completely <span class="underline decoration-yellow-400 font-bold text-yellow-300">FREE</span>!</span>
         <button onclick="toggleShareModal()" class="bg-yellow-500 hover:bg-yellow-400 text-indigo-950 text-xs px-3 py-1 rounded-md font-bold transition shadow active:scale-95">
-            Get Referral Code & QR 
+            Get Referral Code & QR
         </button>
     </div>
 </div>
@@ -179,7 +263,7 @@
     <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border-2 border-amber-400 relative animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
 
         <div class="absolute top-0 left-0 right-0 bg-gradient-to-r from-amber-500 to-orange-600 text-white text-[11px] font-black uppercase tracking-widest text-center py-1.5 shadow-sm">
-             MEGA STUDENT DISCOUNT LIFELINE DETECTED 
+             MEGA STUDENT DISCOUNT LIFELINE DETECTED
         </div>
 
         <button onclick="toggleShareModal()" class="absolute top-6 right-4 text-slate-400 hover:text-slate-600 font-bold text-xl p-1 transition">&times;</button>
@@ -192,6 +276,32 @@
                 ⚠️ Verification Required: Effort = Big Rewards!
             </p>
         </div>
+        <!-- Aesthetic Redirection Authorization Modal -->
+<div id="redirect-auth-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 9999; animation: fadeIn 0.2s ease;">
+    <div style="background: #ffffff; width: 90%; max-width: 460px; padding: 2rem; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); text-align: center; border: 1px solid #e2e8f0;">
+
+        <!-- Trust Badge Icon -->
+        <div style="width: 56px; height: 56px; background: #eff6ff; color: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem auto; font-size: 1.5rem;">
+            🛡️
+        </div>
+
+        <h3 style="font-size: 1.25rem; font-weight: 600; color: #0f172a; margin-bottom: 0.75rem;">External Redirection Notice</h3>
+
+        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin-bottom: 1.5rem;">
+            Would you like to open a secure external window to view our official Facebook campaign? In accordance with privacy best practices, your profile data remains private and unlinked.
+        </p>
+
+        <!-- Interactive Buttons -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <button type="button" onclick="closeRedirectModal()" style="padding: 0.75rem; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; font-weight: 500; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: background 0.2s;">
+                Cancel
+            </button>
+            <button type="button" onclick="proceedToFacebookLink()" style="padding: 0.75rem; border: none; background: #2563eb; color: #ffffff; font-weight: 500; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: background 0.2s;">
+                Confirm & Proceed
+            </button>
+        </div>
+    </div>
+</div>
 
         <div class="space-y-4 mt-4">
             <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
@@ -675,6 +785,27 @@
                         100% safe. I strictly avoid shady activators that carry viruses or malware. Your files, privacy, and device health are my absolute top priorities.
                     </div>
                 </details>
+                <div id="troubleshoot" class="max-w-3xl mx-auto my-6 scroll-mt-20">
+        <div class="p-6 bg-white rounded-xl border border-slate-200">
+            <h3 class="text-base font-bold text-slate-800 mb-2">What error is your MICROSOFT APPS showing right now?</h3>
+            <p class="text-xs text-slate-500 mb-4">Select your software block below to evaluate the technical cleanup process and turnaround window:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                <button type="button" onclick="showResolution('unlicensed', this)" class="error-btn p-3 text-left border rounded-lg hover:bg-slate-50 font-medium text-xs text-slate-700 transition focus:outline-none">
+                    ⚠️ "Product Unlicensed"
+                </button>
+                <button type="button" onclick="showResolution('viewonly', this)" class="error-btn p-3 text-left border rounded-lg hover:bg-slate-50 font-medium text-xs text-slate-700 transition focus:outline-none">
+                    🔒 "View Only / Cannot Edit"
+                </button>
+                <button type="button" onclick="showResolution('deactivated', this)" class="error-btn p-3 text-left border rounded-lg hover:bg-slate-50 font-medium text-xs text-slate-700 transition focus:outline-none">
+                    ❌ "Product Deactivated"
+                </button>
+            </div>
+            <div id="resolution-box" class="hidden p-4 bg-indigo-50 border border-indigo-100 rounded-lg transition-all duration-300">
+                <h4 class="font-bold text-indigo-900 text-xs mb-1">⏱️ Estimated Resolution Time: <span id="resolution-time">10 Minutes</span></h4>
+                <p id="resolution-text" class="text-xs text-indigo-800"></p>
+            </div>
+        </div>
+    </div>
             </div>
         </div>
     </section>
@@ -685,11 +816,11 @@
                 <div class="md:col-span-7 bg-white rounded-3xl p-8 shadow-xl shadow-indigo-500/5 border border-indigo-50/50 flex flex-col justify-between">
                     <div>
                         <div class="mb-6 space-y-1">
-                            <h2 class="text-2xl font-black text-slate-900 tracking-tight">Have a Question or Suggestion?</h2>
+                            <h2 class="text-2xl font-black text-slate-900 tracking-tight"><b>CLIENT INTAKE FORM:</b></h2>
                             <p class="text-slate-500 text-xs font-medium">Fill out the fields below to submit directly to my inbox and seamlessly trigger a direct message duplicate to my Facebook Page.</p>
                         </div>
 
-                        <form id="ajaxForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                        <form id="ajaxForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" class="space-y-5">
     <input type="hidden" name="access_key" value="b5a8f988-9d65-4e77-8e05-4648cf281ff0">
     <input type="hidden" name="subject" value="New Setup Request from XAVIERIUM Site">
     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
@@ -716,36 +847,178 @@
         </div>
     </div>
 
+    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 space-y-3">
+        <span class="text-[11px] font-extrabold text-indigo-600 uppercase tracking-widest block">Installation Device Environment</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1">
+                <label class="text-xs font-bold text-slate-600 tracking-wider uppercase">Laptop Brand/Make *</label>
+                <input type="text" name="laptop_make" required placeholder="e.g. ASUS, Lenovo, Apple" class="w-full text-sm px-4 py-3 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300">
+            </div>
+            <div class="space-y-1">
+                <label class="text-xs font-bold text-slate-600 tracking-wider uppercase">Laptop Model/Type *</label>
+                <input type="text" name="laptop_model" required placeholder="e.g. ROG Zephyrus, ThinkPad X1, MacBook Air" class="w-full text-sm px-4 py-3 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300">
+            </div>
+        </div>
+    </div>
+
     <div class="space-y-1">
         <label class="text-xs font-black text-slate-700 tracking-wider uppercase">Your Message / Selected Error</label>
         <textarea id="form-message" rows="4" name="message" required placeholder="Select an error below or tell us how we can help..." class="w-full text-sm px-4 py-3.5 rounded-2xl border border-slate-200 bg-[#fafaff] focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all duration-300 resize-none"></textarea>
     </div>
 
-    <div id="troubleshoot" class="max-w-3xl mx-auto my-6 scroll-mt-20">
-        <div class="p-6 bg-white rounded-xl border border-slate-200">
-            <h3 class="text-base font-bold text-slate-800 mb-2">What error is your MICROSOFT APPS showing right now?</h3>
-            <p class="text-xs text-slate-500 mb-4">Select your software block below to evaluate the technical cleanup process and turnaround window:</p>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-                <button type="button" onclick="showResolution('unlicensed', this)" class="error-btn p-3 text-left border rounded-lg hover:bg-slate-50 font-medium text-xs text-slate-700 transition focus:outline-none">
-                    ⚠️ "Product Unlicensed"
-                </button>
-                <button type="button" onclick="showResolution('viewonly', this)" class="error-btn p-3 text-left border rounded-lg hover:bg-slate-50 font-medium text-xs text-slate-700 transition focus:outline-none">
-                    🔒 "View Only / Cannot Edit"
-                </button>
-                <button type="button" onclick="showResolution('deactivated', this)" class="error-btn p-3 text-left border rounded-lg hover:bg-slate-50 font-medium text-xs text-slate-700 transition focus:outline-none">
-                    ❌ "Product Deactivated"
-                </button>
-            </div>
-            <div id="resolution-box" class="hidden p-4 bg-indigo-50 border border-indigo-100 rounded-lg transition-all duration-300">
-                <h4 class="font-bold text-indigo-900 text-xs mb-1">⏱️ Estimated Resolution Time: <span id="resolution-time">10 Minutes</span></h4>
-                <p id="resolution-text" class="text-xs text-indigo-800"></p>
-            </div>
+    <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1px dashed #cbd5e1; padding: 1.5rem; border-radius: 20px;" class="space-y-3">
+        <div class="flex items-center gap-2">
+            <span style="background: #e0f2fe; color: #0369a1; padding: 0.25rem 0.6rem; border-radius: 999px; font-size: 10px; font-weight: 800; tracking-wider: uppercase;">PROMO CLAIM</span>
+            <span class="text-xs font-bold text-slate-700">Availing the 50% Off Campaign?</span>
+        </div>
+
+        <div class="space-y-2">
+            <label for="proofUpload" class="text-xs font-semibold text-slate-600 block">
+                Upload Screenshot Proof (Optional)
+            </label>
+            <p style="font-size: 11px;" class="text-slate-500 leading-relaxed">
+                If you generated a tracking token above to save 50%, please attach a screenshot showing your public share of our Facebook post or official QR code layout. Leave blank if standard tier.
+            </p>
+            <input type="file" id="proofUpload" name="proof_upload" accept="image/*" class="w-full text-xs text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer transition-all">
+        </div>
+    </div>
+
+    <div class="space-y-3 pt-2">
+        <div style="background-color: #f8fafc; border-radius: 14px; padding: 1rem; border-left: 4px solid #4f46e5;" class="text-[11px] text-slate-500 leading-relaxed">
+            In compliance with data security frameworks, your submitted configuration matrix specifications and personal indicators (Identity elements, Reachability records, Upload attachments) are processed safely. These data records are strictly utilized to coordinate system deployments, authorize discount provisions, and satisfy technical tickets, and are targeted for deletion upon lifecycle termination.
+        </div>
+
+        <div class="flex items-start gap-2.5">
+            <input type="checkbox" id="privacyConsent" name="privacy_consent" required class="mt-0.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500">
+            <label for="privacyConsent" class="text-xs text-slate-600 leading-tight select-none">
+                I authorize the reliable data verification check parameters outlined above. <span class="text-rose-500">*</span>
+            </label>
         </div>
     </div>
 
     <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-3.5 rounded-2xl transition-all duration-300 shadow-md text-sm flex items-center justify-center gap-2 hover:scale-[1.01]">
-        Send Support Request <i class="fa-solid fa-paper-plane text-xs"></i>
+        Send Request <i class="fa-solid fa-paper-plane text-xs"></i>
     </button>
+    <!-- Separator Visual Line -->
+<div class="relative my-8">
+    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+        <div class="w-full border-t border-slate-200"></div>
+    </div>
+    <div class="relative flex justify-center text-xs uppercase">
+        <span class="bg-white px-3 text-slate-400 tracking-widest font-bold">Share Your Experience</span>
+    </div>
+</div>
+
+<!-- COMPACT BUILT-IN SERVICE EVALUATION FORM -->
+<div style="background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);" class="p-6 rounded-2xl space-y-4">
+
+    <!-- Title Header -->
+    <div class="text-center space-y-1">
+        <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mx-auto text-lg border border-purple-100 mb-1">
+            ⭐
+        </div>
+        <h4 class="text-sm font-black text-slate-800 uppercase tracking-wider">Service Evaluation & Feedback</h4>
+        <p class="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
+            Recently finished an installation with us? Rate your setup experience below to help us streamline our deployment pipeline.
+        </p>
+    </div>
+
+    <!-- Evaluation Form Body -->
+    <form id="evaluationForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+        <!-- Separate Subject Header to organize your Gmail Inbox -->
+        <input type="hidden" name="access_key" value="b5a8f988-9d65-4e77-8e05-4648cf281ff0">
+        <input type="hidden" name="subject" value="⭐ NEW SERVICE EVALUATION RECEIVED">
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+        <!-- Grid Fields -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="space-y-1">
+                <label class="text-[10px] font-bold text-slate-600 tracking-wider uppercase">Your Name</label>
+                <input type="text" name="eval_name" required placeholder="Juan Dela Cruz" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition-all duration-300">
+            </div>
+            <div class="space-y-1">
+                <label class="text-[10px] font-bold text-slate-600 tracking-wider uppercase">Tracking Code used</label>
+                <input type="text" name="eval_code" placeholder="Optional (e.g. XV-JUAN-1234)" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white font-mono focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition-all duration-300">
+            </div>
+        </div>
+
+        <!-- System Performance Multi-Choice Radio Layout -->
+        <div class="space-y-1.5">
+            <label class="text-[10px] font-bold text-slate-600 tracking-wider uppercase block">System Performance Status</label>
+            <div class="grid grid-cols-1 gap-2">
+                <label class="flex items-center gap-2 px-3.5 py-2.5 border border-slate-200 bg-white rounded-xl text-xs text-slate-700 cursor-pointer hover:bg-slate-50 transition-all">
+                    <input type="radio" name="performance_status" value="Working perfectly" checked class="text-purple-600 focus:ring-purple-500">
+                    🚀 Working perfectly (Passes verification checks)
+                </label>
+                <label class="flex items-center gap-2 px-3.5 py-2.5 border border-slate-200 bg-white rounded-xl text-xs text-slate-700 cursor-pointer hover:bg-slate-50 transition-all">
+                    <input type="radio" name="performance_status" value="Opens slowly" class="text-purple-600 focus:ring-purple-500">
+                    ⚠️ App opens but responds slowly
+                </label>
+                <label class="flex items-center gap-2 px-3.5 py-2.5 border border-slate-200 bg-white rounded-xl text-xs text-slate-700 cursor-pointer hover:bg-slate-50 transition-all">
+                    <input type="radio" name="performance_status" value="Issue persists" class="text-purple-600 focus:ring-purple-500">
+                    ❌ Issue persists / Showed an error code
+                </label>
+            </div>
+        </div>
+
+        <!-- Content Feedback -->
+        <div class="space-y-1">
+            <label class="text-[10px] font-bold text-slate-600 tracking-wider uppercase">Comments & Improvement Suggestions</label>
+            <textarea rows="2" name="eval_comments" required placeholder="Tell us how your system is performing or share feedback..." class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition-all duration-300 resize-none"></textarea>
+        </div>
+
+        <!-- Submit Review Button -->
+        <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl transition-all duration-300 shadow-sm text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+            Submit Feedback <i class="fa-solid fa-square-poll-horizontal text-xs"></i>
+        </button>
+    </form>
+</div>
+
+<!-- JAVASCRIPT HANDLER FOR THE EVALUATION SUBMISSION -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const evalForm = document.getElementById('evaluationForm');
+        if (evalForm) {
+            evalForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(evalForm);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
+
+                const btn = evalForm.querySelector('button[type="submit"]');
+                const originalText = btn ? btn.innerHTML : '';
+
+                if (btn) {
+                    btn.innerHTML = 'Sending Feedback... <i class="fa-solid fa-spinner animate-spin ml-1.5"></i>';
+                    btn.disabled = true;
+                }
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: json
+                })
+                .then(async (response) => {
+                    if (response.status == 200) {
+                        alert("Thank you! Your technical feedback has been registered successfully.");
+                        evalForm.reset();
+                    } else {
+                        alert("Submission error. Please verify configuration parameters.");
+                    }
+                })
+                .catch(error => {
+                    alert("Network error. Please check your data connection parameters.");
+                })
+                .then(() => {
+                    if (btn) {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    }
+                });
+            });
+        }
+    });
+</script>
 </form>
                     </div>
                 </div>
@@ -960,6 +1233,7 @@ Scan our official QR graphic or click the links below to connect:
         alert("Support request received! Your custom sharing tracking indicators are bundled in this request. If 3 users sign up using your code layout, our team will process your setup fully free of charge.");
         e.target.reset();
     }
+
 </script>
 <!-- END: XAVIERIUM CORE REFERRAL SCRIPT ENGINE -->
 <!-- END: XAVIERIUM INTERACTION SCRIPTS -->
